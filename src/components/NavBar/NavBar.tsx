@@ -10,9 +10,9 @@ export default function NavBar({}: Props) {
       <Avatar sx={{ width: 50, height: 50 }} src="../src/assets/dp.jpeg" />
       <div className="flex gap-8 items-center">
         <TopNavLink number={1} title="About" navTo="#about" />
-        <TopNavLink number={2} title="Experience" navTo="#Experience" />
-        <TopNavLink number={3} title="Work" navTo="#Work" />
-        <TopNavLink number={4} title="Contact" navTo="#Contact" />
+        <TopNavLink number={2} title="Experience" navTo="#experience" />
+        <TopNavLink number={3} title="Work" navTo="#work" />
+        <TopNavLink number={4} title="Contact" navTo="#contact" />
         <a
           href="../src/assets/Jan Updated CV.pdf"
           target="_blank"

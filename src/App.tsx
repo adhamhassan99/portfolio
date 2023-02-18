@@ -1,10 +1,19 @@
 import React from "react";
-import { NavBar } from "./components";
+import { AboutMe, Hero, NavBar, Section } from "./components";
 
 function App() {
   return (
-    <div className="App bg-Navy w-screen box-border">
+    <div className="App bg-Navy w-full">
       <NavBar />
+      <Section className="flex justify-center">
+        <Hero />
+      </Section>
+      <Section className="p-16" id="about">
+        <AboutMe />
+      </Section>
+      <Section id="experience">b</Section>
+      <Section id="work">c</Section>
+      <Section id="contact">c</Section>
     </div>
   );
 }
