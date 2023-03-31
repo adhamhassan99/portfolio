@@ -5,10 +5,10 @@ function App() {
   return (
     <div className="App bg-Navy w-full">
       <NavBar />
-      <Section className="flex justify-center">
+      <Section className="">
         <Hero />
       </Section>
-      <Section className="p-16" id="about">
+      <Section className="" id="about">
         <AboutMe />
       </Section>
       <Section id="experience">b</Section>

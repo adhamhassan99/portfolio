@@ -13,6 +13,7 @@ module.exports = {
         White: "#e6f1ff",
         Green: "#64ffda",
         greenTint: "rgba(100, 255, 218, 0.1)",
+        GreenSecondary: "#53d3b9",
       },
     },
   },

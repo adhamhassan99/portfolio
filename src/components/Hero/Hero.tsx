@@ -4,7 +4,7 @@ type Props = {};
 
 export default function Hero({}: Props) {
   return (
-    <div className="px-16 mt-44 space-y-8">
+    <div className="mt-32 space-y-8">
       <p className="text-Green text-lg">Hello, my name is</p>
       <div className="">
         <div className="text-LightestSlate font-medium  text-3xl sm:text-6xl md:text-6xl">
@@ -19,7 +19,7 @@ export default function Hero({}: Props) {
         experiences. Currently, I'm building scalable, highly available products
         at{" "}
         <a className="text-Green" href="https://www.ejada.com/" target="_blank">
-          Ejada
+          Ejada Systems Ltd
         </a>
         .
       </div>
