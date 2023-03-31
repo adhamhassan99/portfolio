@@ -3,7 +3,7 @@ import { AboutMe, Hero, NavBar, Section } from "./components";
 
 function App() {
   return (
-    <div className="App bg-Navy w-full">
+    <div className="App bg-Navy w-full ">
       <NavBar />
       <Section className="">
         <Hero />
