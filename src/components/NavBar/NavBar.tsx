@@ -1,13 +1,14 @@
 import React from "react";
 import TopNavLink from "../TopNavLink/TopNavLink";
 import { Avatar } from "@mui/material";
+import dp from "../../assets/dp.jpeg";
 
 type Props = {};
 
 export default function NavBar({}: Props) {
   return (
     <div className="py-5 px-8 flex justify-between">
-      <Avatar sx={{ width: 50, height: 50 }} src="../src/assets/dp.jpeg" />
+      <Avatar sx={{ width: 50, height: 50 }} src={dp} />
       <div className=" gap-8 items-center hidden  sm:flex">
         <TopNavLink number={1} title="About" navTo="#about" />
         <TopNavLink number={2} title="Experience" navTo="#experience" />
