@@ -13,7 +13,7 @@ export default function AboutMe({}: Props) {
       <div className="flex-col flex h-full max-w-4xl">
         <SectionHeader number={1} title="About Me" />
         <div className="flex justify-between mt-14 flex-1 gap-6 flex-wrap">
-          <div className="flex flex-col text-Slate w-3/4 gap-5 max-w-lg">
+          <div className="flex flex-col text-Slate w-3/4 gap-5 max-w-lg mx-auto">
             <div className="">
               Hello! My name is Adham Hassan and my passion is creating software
               for both web and mobile. My interest in development started in
@@ -35,7 +35,7 @@ export default function AboutMe({}: Props) {
             </div>
             <div className="">
               I am currently working in team of 6 talented developers on a{" "}
-              <BlueText text="React Native" link="https://reactnative.dev/" />
+              <BlueText text="React Native" link="https://reactnative.dev/" />{" "}
               application for <BlueText text="Android" /> and{" "}
               <BlueText text="iOS" /> .
             </div>
@@ -58,7 +58,7 @@ export default function AboutMe({}: Props) {
               })}
             </div>
           </div>
-          <div className="relative z-10 group h-fit  w-1/3">
+          <div className="relative z-10 group h-fit  w-1/3 mx-auto">
             <div className="">
               <img className="rounded-md" src={dp} />
             </div>

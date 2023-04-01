@@ -1,4 +1,4 @@
-import React from "react";
+import React, { UIEventHandler } from "react";
 import TopNavLink from "../TopNavLink/TopNavLink";
 import { Avatar } from "@mui/material";
 import dp from "../../assets/dp.jpeg";
@@ -7,8 +7,8 @@ type Props = {};
 
 export default function NavBar({}: Props) {
   return (
-    <div className="py-5 px-8 flex justify-between">
-      <Avatar sx={{ width: 50, height: 50 }} src={dp} />
+    <div className="py-5 px-8 flex justify-between sticky top-0 bg-Navy w-full z-50 ">
+      <img src={dp} className="w-14 h-14 rounded-full" />
       <div className=" gap-8 items-center hidden  sm:flex">
         <TopNavLink number={1} title="About" navTo="#about" />
         <TopNavLink number={2} title="Experience" navTo="#experience" />
