@@ -12,7 +12,7 @@ export default function NavBar({}: Props) {
       <div className=" gap-8 items-center hidden  sm:flex">
         <TopNavLink number={1} title="About" navTo="#about" />
         <TopNavLink number={2} title="Experience" navTo="#experience" />
-        <TopNavLink number={3} title="Work" navTo="#work" />
+        <TopNavLink disabled number={3} title="Work" navTo="#work" />
         <TopNavLink number={4} title="Contact" navTo="#contact" />
         <a
           href="../src/assets/Jan Updated CV.pdf"

@@ -34,10 +34,10 @@ const WorkItem = ({ activeId, workItems }: Props) => {
         date={workItems[activeId].date}
         companyUrl={workItems[activeId].companySite}
       />
-      <ul className="mt-5 space-y-2">
+      <ul className="mt-5 space-y-4">
         {workItems[activeId].description.map((item, index) => (
           <li
-            className="text-LightSlate before:content-['▶'] before:text-Green before:stroke-Green before:text-xs before:mr-2"
+            className=" text-LightSlate before:content-['▶'] before:text-Green before:stroke-Green before:text-xs before:mr-4 max-w-lg"
             key={index}
           >
             {item}

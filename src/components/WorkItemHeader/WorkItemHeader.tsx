@@ -20,7 +20,13 @@ const WorkItemHeader = (props: Props) => {
           {props.company}
         </a>
       </div>
-      <div className=" text-LightSlate mt-2">{props.date}</div>
+      <div className="flex">
+        <div className=" text-LightSlate mt-2">{props.date}</div>
+        <div className=" text-LightSlate mt-2 ml-5">
+          {" "}
+          {props.type ?? "Full-Time"}
+        </div>
+      </div>
     </div>
   );
 };

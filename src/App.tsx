@@ -1,6 +1,8 @@
 import React from "react";
 import { AboutMe, Hero, NavBar, Section } from "./components";
 import WorkedPlacesSelector from "./components/WorkedPlacesSelector/WorkedPlacesSelector";
+import ContactMe from "./components/ContactMe/ContactMe";
+import Credits from "./components/Credits/Credits";
 
 function App() {
   const handleScroll = (event: any) => {
@@ -22,7 +24,10 @@ function App() {
         <WorkedPlacesSelector />
       </Section>
       <Section id="work">c</Section>
-      <Section id="contact">c</Section>
+      <Section className="pb-0 mb-0 h-[90vh]" id="contact">
+        <ContactMe />
+      </Section>
+      <Credits />
     </div>
   );
 }

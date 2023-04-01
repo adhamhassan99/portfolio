@@ -59,8 +59,8 @@ const WorkedPlacesSelector = (props: Props) => {
   return (
     <div className="py-24 px-16">
       <SectionHeader title="Where I've Worked" number={2} />
-      <div className="flex mt-7 gap-7">
-        <div className="flex flex-col">
+      <div className="flex flex-col md:flex md:flex-row mt-7 gap-7">
+        <div className="sm:flex md:flex-col flex-row hidden">
           {workExperience.map((value, i) => {
             return (
               <div

@@ -6,11 +6,11 @@ export default function Hero({}: Props) {
   return (
     <div className="mt-10 space-y-8">
       <p className="text-Green text-lg">Hello, my name is</p>
-      <div className="">
-        <div className="text-LightestSlate font-medium  text-3xl sm:text-6xl md:text-6xl">
+      <div className="space-y-2">
+        <div className="font-bold text-LightestSlate  text-3xl sm:text-6xl md:text-7xl">
           Adham Hassan.
         </div>
-        <div className="text-LightSlate font-medium text-3xl sm:text-6xl md:text-6xl">
+        <div className="text-LightSlate font-bold text-3xl sm:text-6xl md:text-7xl">
           I build Web and Mobile Apps.
         </div>
       </div>
