@@ -5,6 +5,7 @@ type Props = {
   company: string;
   date: string;
   companyUrl?: string;
+  type?: string;
 };
 
 const WorkItemHeader = (props: Props) => {
