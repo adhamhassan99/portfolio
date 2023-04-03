@@ -14,7 +14,7 @@ function App() {
       className="App bg-Navy w-full "
     >
       <NavBar />
-      <Section className="">
+      <Section id="hero" className="">
         <Hero />
       </Section>
       <Section className="" id="about">
@@ -24,7 +24,7 @@ function App() {
         <WorkedPlacesSelector />
       </Section>
       <Section id="work">c</Section>
-      <Section className="pb-0 mb-0 h-[90vh]" id="contact">
+      <Section className="pt-0 pb-0 mb-0 h-[80vh]" id="contact">
         <ContactMe />
       </Section>
       <Credits />

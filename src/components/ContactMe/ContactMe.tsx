@@ -8,7 +8,9 @@ const ContactMe = (props: Props) => {
       <div className="flex flex-col">
         <div className="flex flex-col items-center gap-6">
           <p className="text-Green">04. What's Next?</p>
-          <p className="text-6xl text-LightSlate font-bold">Get In Touch</p>
+          <p className="text-center text-6xl text-LightSlate font-bold">
+            Get In Touch
+          </p>
           <p className="text-lg text-center text-Slate font-bold max-w-2xl">
             Although I’m not currently looking for any new opportunities, my
             inbox is always open. Whether you have a question or just want to

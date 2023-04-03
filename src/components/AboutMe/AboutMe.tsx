@@ -9,7 +9,7 @@ const skills = ["React", "React Native", "JavaScript", "TypeScript", "Next JS"];
 
 export default function AboutMe({}: Props) {
   return (
-    <div className="">
+    <div className="mt-3">
       <div className="flex-col flex h-full max-w-4xl">
         <SectionHeader number={1} title="About Me" />
         <div className="flex justify-between mt-14 flex-1 gap-6 flex-wrap">

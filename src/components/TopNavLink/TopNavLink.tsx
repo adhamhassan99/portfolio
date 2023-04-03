@@ -11,10 +11,10 @@ export default function TopNavLink({ number, navTo, title, disabled }: Props) {
   return (
     <div className="text-sm">
       <a
-        className={`transition-all duration-300 text-LightestSlate hover:text-Green ${
+        className={`hover:cursor-pointer transition-all duration-300 text-LightestSlate hover:text-Green ${
           disabled ? "opacity-20" : ""
         }`}
-        href={disabled ? "" : navTo}
+        href={disabled ? null : navTo}
       >
         <div className="inline-block mr-2 text-Green">{`0${number}`}.</div>
         {title}
