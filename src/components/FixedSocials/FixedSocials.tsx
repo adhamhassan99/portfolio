@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as GithubSVG } from "../../assets/icons8-github-48.svg";
 import { ReactComponent as TwitterSVG } from "../../assets/icons8-twitter.svg";
 import { ReactComponent as LinkedINSVG } from "../../assets/icons8-linkedin.svg";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 type Props = {};
 
