@@ -8,7 +8,7 @@ type Props = {};
 export default function NavBar({}: Props) {
   return (
     <div className="py-5 px-8 flex justify-between sticky top-0 bg-Navy w-full z-50 ">
-      <a data-aos="fade-down" href="#hero">
+      <a data-aos="fade-down" data-aos-once="true" href="#hero">
         <img src={dp} className="w-14 h-14 rounded-full" />
       </a>
       <div className=" gap-8 items-center hidden  sm:flex">

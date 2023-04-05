@@ -5,7 +5,15 @@ import BlueText from "../BlueText/BlueText";
 
 type Props = {};
 
-const skills = ["React", "React Native", "JavaScript", "TypeScript", "Next JS"];
+const skills = [
+  "React",
+  "React Native",
+  "JavaScript",
+  "TypeScript",
+  "Next JS",
+  "Python",
+  "Django",
+];
 
 export default function AboutMe({}: Props) {
   return (
@@ -27,7 +35,7 @@ export default function AboutMe({}: Props) {
               <a
                 href="https://www.ejada.com/"
                 target="_blank"
-                className="text-Green"
+                className="text-Green before:w-0 after:w-0 hover:after:w-64 hover:after:duration-500 hover:after:h-[2px] hover:after:bg-Green after:absolute after:bottom-[1.3rem] after:left-[12.4rem] hover:text-Green"
               >
                 Saudi Arabian based tech company
               </a>{" "}
@@ -42,14 +50,17 @@ export default function AboutMe({}: Props) {
             <div data-aos="fade-up" className="">
               Here are some technologies I have been working with recently:
             </div>
-            <div data-aos="fade-up" className="grid gap-4  grid-cols-3">
+            <div data-aos="fade-up" className="grid gap-4  grid-cols-2">
               {skills.map((skill, index) => {
                 return (
-                  <div key={index} className="group flex items-center">
+                  <div
+                    key={index}
+                    className="group flex items-center hover:-translate-y-2 transition-transform duration-300"
+                  >
                     <div className="group-hover:border-Green group-hover:cursor-pointer border-l-2 rounded-full w-3 h-3" />
                     <BlueText
                       className={
-                        "group-hover:text-white group-hover:cursor-pointer"
+                        "group-hover:text-Green  group-hover:cursor-pointer"
                       }
                       text={skill}
                     />

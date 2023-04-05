@@ -25,7 +25,7 @@ function App() {
         <Section id="hero" className="">
           <Hero />
         </Section>
-        <Section className="" id="about">
+        <Section className="items-center" id="about">
           <AboutMe />
         </Section>
         <Section className="" id="experience">

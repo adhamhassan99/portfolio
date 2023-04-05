@@ -16,7 +16,12 @@ export default function TopNavLink({
   delay = "1000",
 }: Props) {
   return (
-    <div data-aos="fade-down" data-aos-duration={delay} className="text-sm">
+    <div
+      data-aos="fade-down"
+      data-aos-once="true"
+      data-aos-duration={delay}
+      className="text-sm"
+    >
       <a
         className={`hover:cursor-pointer transition-all duration-300 text-LightestSlate hover:text-Green ${
           disabled ? "opacity-20" : ""
