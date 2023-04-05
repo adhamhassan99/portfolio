@@ -25,6 +25,8 @@ const FixedSocials = (props: Props) => {
     <>
       <div className="hidden flex-col space-y-7 xl:flex fixed left-16 top-2/3 items-center h-full">
         <a
+          data-aos="fade-down"
+          data-aos-duration="1000"
           title="GitHub"
           href="https://github.com/adhamhassan99"
           target="_blank"
@@ -32,6 +34,8 @@ const FixedSocials = (props: Props) => {
           <GithubSVG className="fill-Slate hover:fill-Green hover:-translate-y-2 transition duration-200 ease-linear" />
         </a>
         <a
+          data-aos="fade-down"
+          data-aos-duration="2000"
           title="Twitter"
           href="https://twitter.com/adhamhassan99"
           target="_blank"
@@ -39,19 +43,30 @@ const FixedSocials = (props: Props) => {
           <TwitterSVG className="fill-Slate  hover:fill-Green hover:-translate-y-2 transition duration-200 ease-linear" />
         </a>
         <a
+          data-aos="fade-down"
+          data-aos-duration="3000"
           title="LinkedIn"
           href="https://www.linkedin.com/in/adhamhassanabdelwahab/"
           target="_blank"
         >
           <LinkedINSVG className="fill-Slate  hover:fill-Green hover:-translate-y-2 transition duration-200 ease-linear" />
         </a>
-        <div className="rounded-md  border-4 bg-Slate w-3 h-56 border-Navy"></div>
+        <div
+          data-aos="fade-down"
+          data-aos-duration="7000"
+          className="rounded-md  border-4 bg-Slate w-3 h-56 border-Navy"
+        ></div>
       </div>
 
-      <div className="hidden flex-col xl:flex fixed left-[90%]  top-2/3 items-center h-full">
+      <div
+        data-aos="fade-down"
+        data-aos-duration="1000"
+        className="hidden flex-col xl:flex fixed left-[90%]  top-2/3 items-center h-full"
+      >
         <a
           onClick={handleCopy}
           // href="mailto:adham.hassan7499@gmail.com"
+
           className="cursor-vertical-text rotate-90 mt-20 text-Slate hover:text-Green hover:cursor-pointer transition hover:-translate-y-2 duration-300"
         >
           adham.hassan7499@gmai.com

@@ -6,11 +6,14 @@ import Credits from "./components/Credits/Credits";
 import FixedSocials from "./components/FixedSocials/FixedSocials";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
   const handleScroll = (event: any) => {
     console.log(event);
   };
+  AOS.init();
   return (
     <>
       <div

@@ -9,19 +9,19 @@ const skills = ["React", "React Native", "JavaScript", "TypeScript", "Next JS"];
 
 export default function AboutMe({}: Props) {
   return (
-    <div className="mt-3">
+    <div data-aos="fade-up" className="mt-3">
       <div className="flex-col flex h-full max-w-4xl">
         <SectionHeader number={1} title="About Me" />
         <div className="flex justify-between mt-14 flex-1 gap-6 flex-wrap">
           <div className="flex flex-col text-Slate w-3/4 gap-5 max-w-lg mx-auto">
-            <div className="">
+            <div data-aos="fade-up" className="">
               Hello! My name is Adham Hassan and my passion is creating software
               for both web and mobile. My interest in development started in
               2021 when I had to learn and create a backend using Django. Since
               then I have been hooked and started expanding my skillset
               everyday.
             </div>
-            <div>
+            <div data-aos="fade-up">
               Fast-forward to today, I had the chance to get employed right
               after my graduation by 1 month in a{" "}
               <a
@@ -33,16 +33,16 @@ export default function AboutMe({}: Props) {
               </a>{" "}
               in Cairo/Egypt.
             </div>
-            <div className="">
+            <div data-aos="fade-up" className="">
               I am currently working in team of 6 talented developers on a{" "}
               <BlueText text="React Native" link="https://reactnative.dev/" />{" "}
               application for <BlueText text="Android" /> and{" "}
               <BlueText text="iOS" /> .
             </div>
-            <div className="">
+            <div data-aos="fade-up" className="">
               Here are some technologies I have been working with recently:
             </div>
-            <div className="grid gap-4  grid-cols-3">
+            <div data-aos="fade-up" className="grid gap-4  grid-cols-3">
               {skills.map((skill, index) => {
                 return (
                   <div key={index} className="group flex items-center">
