@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 function App() {
   const handleScroll = (event: any) => {
@@ -28,10 +29,18 @@ function App() {
         <Section className="items-center" id="about">
           <AboutMe />
         </Section>
-        <Section className="" id="experience">
+        <Section className="items-center" id="experience">
           <WorkedPlacesSelector />
         </Section>
-        <Section id="work">c</Section>
+        {/* <Section id="work" className="items-center">
+          <Player
+            src="https://assets3.lottiefiles.com/packages/lf20_z215qtts.json"
+            className="player"
+            loop
+            autoplay
+            style={{ height: "500px", width: "500px" }}
+          />
+        </Section> */}
         <Section className="pt-0 pb-0 mb-0 h-[80vh] md:h-[90vh]" id="contact">
           <ContactMe />
         </Section>
