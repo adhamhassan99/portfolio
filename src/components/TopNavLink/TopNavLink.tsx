@@ -6,6 +6,7 @@ type Props = {
   navTo: string;
   disabled?: boolean;
   delay?: string;
+  drawer?: boolean;
 };
 
 export default function TopNavLink({
@@ -14,10 +15,11 @@ export default function TopNavLink({
   title,
   disabled,
   delay = "1000",
+  drawer = false,
 }: Props) {
   return (
     <div
-      data-aos="fade-down"
+      data-aos={!drawer && "fade-down"}
       data-aos-once="true"
       data-aos-duration={delay}
       className="text-sm"
