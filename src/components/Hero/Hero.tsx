@@ -18,7 +18,7 @@ export default function Hero({}: Props) {
       <div className="flex flex-col md:flex-row">
         <div className="max-w-xl text-LightestSlate  text-lg sm:text-xl ">
           I'm a software engineer specializing in building outstanding digital
-          experiences. Currently, I'm building scalable, highly available
+          experiences. Currently, I'm building scalable and highly available
           products at{" "}
           <a
             className="text-Green hover:text-Green before:w-0 after:w-0 hover:after:w-40 hover:after:duration-500 hover:after:h-[2px] hover:after:bg-Green after:absolute after:bottom-[23.5rem] after:left-[39.8rem]"

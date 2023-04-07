@@ -71,6 +71,7 @@ export default function AboutMe({}: Props) {
           </div>
           <div className="relative z-10 group h-fit  w-1/3 mx-auto">
             <div className="">
+              <div className="absolute bg-Green w-full h-full rounded-md opacity-60 hover:bg-transparent transition duration-300"></div>
               <img className="rounded-md" src={dp} />
             </div>
             <div className="h-full w-full absolute border-2 rounded-md border-Green -z-50 left-5 top-5 group-hover:top-3 group-hover:left-3 ease-in-out duration-300"></div>
