@@ -23,10 +23,10 @@ function App() {
       >
         <FixedSocials />
         <NavBar />
-        <Section id="hero" className="mb-32 md:mb-0">
+        <Section id="hero" className="mb-56 sm:mb-32 md:mb-0">
           <Hero />
         </Section>
-        <Section className="items-center mb-36 md:mb-0" id="about">
+        <Section className="items-center mb-56 sm:mb-36 md:mb-0" id="about">
           <AboutMe />
         </Section>
         <Section className="items-center" id="experience">
