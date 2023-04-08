@@ -7,7 +7,7 @@ type Props = {
   disabled?: boolean;
   delay?: string;
   drawer?: boolean;
-  onNav?: Function;
+  onNav?: any;
 };
 
 export default function TopNavLink({
