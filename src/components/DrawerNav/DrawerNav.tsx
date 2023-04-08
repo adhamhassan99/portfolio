@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import TopNavLink from "../TopNavLink/TopNavLink";
+import { ReactComponent as BurgerMenu } from "../../assets/burgerMenu.svg";
+import { ReactComponent as Close } from "../../assets/Close.svg";
 
 type Props = {};
 
 const DrawerNav = (props: Props) => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(true);
   const root = document.getElementById("root");
-  useEffect(() => {
-    !active ? (root.style.overflowY = "clip") : (root.style.overflowY = "");
-  }, [active]);
+  // useEffect(() => {
+  //   !active ? (root.style.overflowY = "clip") : (root.style.overflowY = "");
+  // }, [active]);
 
   return (
-    <div className={`sm:hidden  flex flex-col z-50`}>
+    <div id="drawer" className={`sm:hidden  flex flex-col z-50`}>
       <div onClick={() => setActive(!active)} className="">
-        icon
-        {active ? "active" : "not"}
+        <BurgerMenu />
       </div>
 
       <div
@@ -26,18 +27,38 @@ const DrawerNav = (props: Props) => {
           onClick={() => setActive(!active)}
           className="text-white w-fit  ml-auto mr-8 mt-7"
         >
-          Close
+          <Close />
         </div>
         <div className="flex flex-col items-center justify-center h-full gap-14">
-          <TopNavLink drawer number={1} title="About" navTo="#about" />
           <TopNavLink
+            onNav={() => setActive(!active)}
+            drawer
+            number={1}
+            title="About"
+            navTo="#about"
+          />
+          <TopNavLink
+            onNav={() => setActive(!active)}
             drawer
             number={2}
             title="Experience"
             navTo="#experience"
           />
-          <TopNavLink drawer disabled number={3} title="Work" navTo="#work" />
-          <TopNavLink drawer number={4} title="Contact" navTo="#contact" />
+          <TopNavLink
+            onNav={() => setActive(!active)}
+            drawer
+            disabled
+            number={3}
+            title="Work"
+            navTo="#work"
+          />
+          <TopNavLink
+            onNav={() => setActive(!active)}
+            drawer
+            number={4}
+            title="Contact"
+            navTo="#contact"
+          />
         </div>
       </div>
     </div>

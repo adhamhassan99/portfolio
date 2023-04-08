@@ -42,11 +42,11 @@ export default function NavBar({}: Props) {
 
   return (
     <div
-      className={`transition-transform duration-500 -translate-y-${
+      className={`transition duration-500 -translate-y-${
         scrolledDown ? "24" : "0"
       } py-3 px-8 flex justify-between sticky top-0 bg-${
         !bgSemi ? "transparent" : "Navy"
-      } w-full z-50  before:bg-Navy before:absolute before:h-full before:w-screen before:opacity-95 before:drop  before:right-0 before:top-0`}
+      } w-full z-50  before:bg-Navy before:absolute before:h-full before:w-screen before:opacity-95 before:drop-shadow-md  before:right-0 before:top-0`}
     >
       <a data-aos="fade-down" data-aos-once="true" href="#hero">
         <img src={dp} className="w-14 h-14 rounded-full" />

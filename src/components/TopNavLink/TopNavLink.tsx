@@ -7,6 +7,7 @@ type Props = {
   disabled?: boolean;
   delay?: string;
   drawer?: boolean;
+  onNav?: Function;
 };
 
 export default function TopNavLink({
@@ -16,9 +17,11 @@ export default function TopNavLink({
   disabled,
   delay = "1000",
   drawer = false,
+  onNav = () => {},
 }: Props) {
   return (
     <div
+      onClick={onNav}
       data-aos={!drawer && "fade-down"}
       data-aos-once="true"
       data-aos-duration={delay}
