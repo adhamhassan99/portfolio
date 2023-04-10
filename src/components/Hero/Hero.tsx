@@ -21,7 +21,7 @@ export default function Hero({}: Props) {
           experiences. Currently, I'm building scalable and highly available
           products at{" "}
           <a
-            className="text-Green hover:text-Green before:w-0 after:w-0 hover:after:w-40 hover:after:duration-500 hover:after:h-[2px] hover:after:bg-Green after:absolute after:bottom-[23.5rem] after:left-[39.8rem]"
+            className="text-Green hover:text-Green before:w-0 after:w-0 hover:after:w-40 hover:after:duration-500 hover:after:h-[2px] hover:after:bg-Green after:absolute after:bottom-[24.5rem] after:left-[40rem]"
             href="https://www.ejada.com/"
             target="_blank"
           >
