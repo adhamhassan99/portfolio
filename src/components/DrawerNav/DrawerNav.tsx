@@ -62,6 +62,13 @@ const DrawerNav = (props: Props) => {
             title="Contact"
             navTo="#contact"
           />
+          <a
+            target="_blank"
+            href="../src/assets/Resume.pdf"
+            className="mt-10 text-Green hover:text-Green border-Green border px-7 py-4 rounded-md hover:bg-greenTint transition duration-500"
+          >
+            Resume
+          </a>
         </div>
       </div>
     </div>

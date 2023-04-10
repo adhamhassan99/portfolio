@@ -25,7 +25,7 @@ export default function TopNavLink({
       data-aos={!drawer && "fade-down"}
       data-aos-once="true"
       data-aos-duration={delay}
-      className="text-sm"
+      className={`text-${drawer ? "lg" : "sm"}`}
     >
       <a
         className={`hover:cursor-pointer transition-all duration-300 text-LightestSlate hover:text-Green ${
