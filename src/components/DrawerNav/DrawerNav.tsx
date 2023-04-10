@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import TopNavLink from "../TopNavLink/TopNavLink";
 import { ReactComponent as BurgerMenu } from "../../assets/burgerMenu.svg";
 import { ReactComponent as Close } from "../../assets/Close.svg";
+import { useClickAway } from "react-use";
 
 type Props = {};
 
 const DrawerNav = (props: Props) => {
-  const [active, setActive] = useState(true);
+  const [active, setActive] = useState(false);
   const root = document.getElementById("root");
-  // useEffect(() => {
-  //   !active ? (root.style.overflowY = "clip") : (root.style.overflowY = "");
-  // }, [active]);
+
+  const ref = useRef(null);
+  useClickAway(ref, () => {
+    setActive(false);
+  });
 
   return (
-    <div id="drawer" className={`sm:hidden  flex flex-col z-50`}>
+    <div ref={ref} id="drawer" className={` sm:hidden  flex flex-col z-50`}>
       <div onClick={() => setActive(!active)} className="">
         <BurgerMenu />
       </div>
 
       <div
         className={`fixed bg-LightNavy h-screen transition-transform ${
-          active ? "translate-x-full" : ""
+          !active ? "translate-x-full" : ""
         }  duration-500 w-2/3 h-screen top-0 bottom-0 right-0`}
       >
         <div

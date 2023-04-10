@@ -27,28 +27,6 @@ const workExperience = [
       "Write modern, performant, maintainable code for a",
     ],
   },
-  {
-    company: "Mental Health",
-    companySite: "https://www.ejada.com",
-    position: "Software Engineer",
-    date: "September 2020 - Present",
-    description: [
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a",
-    ],
-  },
-  {
-    company: "Mental Health",
-    companySite: "https://www.ejada.com",
-    position: "Software Engineer",
-    date: "September 2020 - Present",
-    description: [
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a",
-    ],
-  },
 ];
 
 const WorkedPlacesSelector = (props: Props) => {
@@ -57,10 +35,10 @@ const WorkedPlacesSelector = (props: Props) => {
     setSelected(i);
   };
   return (
-    <div className="py-24 px-16">
+    <div className="py-24 md:px-16">
       <SectionHeader title="Where I've Worked" number={2} />
-      <div className="flex flex-col md:flex md:flex-row mt-7 gap-7">
-        <div className="sm:flex md:flex-col flex-row hidden">
+      <div className="flex flex-col  md:flex md:flex-row mt-7 gap-7">
+        <div className="flex max-h-80 overflow-y-auto overflow-x-scroll w-[80vw] md:w-fit md:overflow-x-auto md:flex-col flex-row">
           {workExperience.map((value, i) => {
             return (
               <div

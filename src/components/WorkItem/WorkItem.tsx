@@ -27,7 +27,7 @@ type Props = {
 
 const WorkItem = ({ activeId, workItems }: Props) => {
   return (
-    <div className="flex flex-col px-7 py-2">
+    <div className="flex flex-col md:px-7 md:py-2">
       <WorkItemHeader
         company={workItems[activeId].company}
         position={workItems[activeId].position}

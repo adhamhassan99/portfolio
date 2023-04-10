@@ -18,7 +18,7 @@ function App() {
   AOS.init();
   return (
     <>
-      <div className="App bg-Navy w-full ">
+      <div className="App bg-Navy w-full">
         <FixedSocials />
         <NavBar />
         <Section id="hero" className="mb-56 sm:mb-32 md:mb-0">

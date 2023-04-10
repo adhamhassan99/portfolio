@@ -11,7 +11,9 @@ const SectionHeader = (props: Props) => {
       <p className="text-Green text-xl font-semibold">
         {props.number < 10 ? `0${props.number}` : props.number}.
       </p>
-      <div className="text-3xl font-bold text-LightestSlate">{props.title}</div>
+      <div className="text-xl md:text-3xl font-bold text-LightestSlate">
+        {props.title}
+      </div>
       <div className="h-2  border-LightestNavy border-b w-1/4"></div>
     </div>
   );

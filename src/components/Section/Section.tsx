@@ -10,7 +10,7 @@ export default function Section({ children, className = "", id = "" }: Props) {
   return (
     <div
       id={id}
-      className={`min-h-screen box-border px-16 flex justify-center py-24 ${className}`}
+      className={`px-7 min-h-screen box-border md:px-16 flex justify-center md:py-24 ${className}`}
     >
       {children}
     </div>
