@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Player } from "@lottiefiles/react-lottie-player";
 
 function App() {
   const handleScroll = (event: any) => {
@@ -21,7 +20,7 @@ function App() {
       <div className="App bg-Navy w-full">
         <FixedSocials />
         <NavBar />
-        <Section id="hero" className="mb-56 sm:mb-32 md:mb-0">
+        <Section id="hero" className="mb-56 sm:mb-32 md:mb-0 items-center">
           <Hero />
         </Section>
         <Section className="items-center mb-56 sm:mb-36 md:mb-0" id="about">
