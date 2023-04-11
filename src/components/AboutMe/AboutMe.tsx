@@ -21,7 +21,7 @@ export default function AboutMe({}: Props) {
       <div className="flex-col flex h-full max-w-4xl">
         <SectionHeader number={1} title="About Me" />
         <div className="flex justify-between mt-14 flex-1 gap-6 flex-wrap">
-          <div className="flex flex-col text-Slate w-3/4 gap-5 max-w-lg mx-auto">
+          <div className="flex flex-col text-Slate md:w-3/4 gap-5 max-w-lg mx-auto">
             <div data-aos="fade-up" className="">
               Hello! My name is Adham Hassan and my passion is creating software
               for both web and mobile. My interest in development started in
