@@ -1,16 +1,5 @@
 import React from "react";
 import WorkItemHeader from "../WorkItemHeader/WorkItemHeader";
-// {
-//     company: "Mental Health",
-//     companySite: "https://www.ejada.com",
-//     position: "Software Engineer",
-//     date: "September 2020 - Present",
-//     description: [
-//       "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-//       "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-//       "Write modern, performant, maintainable code for a",
-//     ],
-//   },
 
 interface company {
   company: string;

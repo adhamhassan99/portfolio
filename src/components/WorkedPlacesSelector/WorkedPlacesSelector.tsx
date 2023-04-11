@@ -6,25 +6,19 @@ type Props = {};
 
 const workExperience = [
   {
-    company: "Mental Health",
+    company: "Ejada Systems Ltd.",
     companySite: "https://www.ejada.com",
     position: "Software Engineer",
-    date: "September 2020 - Present",
+    date: "August 2022 - Present",
     description: [
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a",
-    ],
-  },
-  {
-    company: "Mental Healthaa",
-    companySite: "https://www.ejada.com",
-    position: "Software Engineer",
-    date: "September 2020 - Present",
-    description: [
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a diverse array of client and internal projects",
-      "Write modern, performant, maintainable code for a",
+      "Implemented multiple user flows to fulfill business needs.",
+      "Enhanced performance by eliminating duplicate query call due to unnecessary side effects resulting in 10% decrease in bandwidth usage.",
+      "Fixed bugs and helped other team members fix bugs.",
+      "Integrated and Implemented Firebase Cloud Messaging for notifications support.",
+      "Implemented Firebase Cloud Messaging for notifications support",
+      "Built core functionalities while integrating with business REST API",
+      "Integrated Mobile App with existing Web App and Backend.",
+      "Communicated with team members to share ideas and seek experience from seniors",
     ],
   },
 ];

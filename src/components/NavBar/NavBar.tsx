@@ -18,42 +18,6 @@ export default function NavBar({}: Props) {
     setBgSemi(mouseWheel === 0);
   }, [mouseWheel]);
 
-  // const onScroll = () => {
-  //   setScrolledDown(window.pageYOffset > offset);
-  //   setOffset(window.pageYOffset);
-  // };
-  // window.addEventListener("scroll", onScroll);
-
-  // useEffect(() => {
-  //   const threshold = 0;
-  //   let lastScrollY = window.pageYOffset;
-  //   let ticking = false;
-
-  //   const updateScrollDir = () => {
-  //     const scrollY = window.pageYOffset;
-
-  //     setBgSemi(window.scrollY === 0);
-
-  //     if (Math.abs(scrollY - lastScrollY) < threshold) {
-  //       ticking = false;
-  //       return;
-  //     }
-  //     setScrolledDown(scrollY > lastScrollY ? true : false);
-  //     lastScrollY = scrollY > 0 ? scrollY : 0;
-  //     ticking = false;
-  //   };
-
-  //   const onScroll = () => {
-  //     console.log("first");
-  //     if (!ticking) {
-  //       window.requestAnimationFrame(updateScrollDir);
-  //       ticking = true;
-  //     }
-  //   };
-
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, [scrolledDown]);
-
   return (
     <div
       className={`transition-all duration-700 -translate-y-${

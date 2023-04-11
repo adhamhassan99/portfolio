@@ -20,8 +20,12 @@ export default function Hero({}: Props) {
           I'm a software engineer specializing in building outstanding digital
           experiences. Currently, I'm building scalable and highly available
           products at{" "}
+          {/* 
+          before:w-0 after:w-0 hover:after:w-40 hover:after:duration-500 hover:after:h-[2px] hover:after:bg-Green after:absolute after:bottom-[24.5rem] after:left-[40rem]
+          
+          */}
           <a
-            className="text-Green hover:text-Green before:w-0 after:w-0 hover:after:w-40 hover:after:duration-500 hover:after:h-[2px] hover:after:bg-Green after:absolute after:bottom-[24.5rem] after:left-[40rem]"
+            className="text-Green hover:text-Green "
             href="https://www.ejada.com/"
             target="_blank"
           >
