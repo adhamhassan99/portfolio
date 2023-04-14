@@ -8,11 +8,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import FBapp from "../firebase";
+import { getAnalytics } from "firebase/analytics";
 
 function App() {
   const handleScroll = (event: any) => {
     console.log(event);
   };
+
+  const analytics = getAnalytics(FBapp);
 
   AOS.init();
   return (
