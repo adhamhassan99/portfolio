@@ -36,6 +36,7 @@ const WorkedPlacesSelector = (props: Props) => {
           {workExperience.map((value, i) => {
             return (
               <div
+                key={i}
                 onClick={() => handleSelection(i)}
                 className={`text-start transition duration-500  hover:cursor-pointer hover:text-Green hover:bg-greenTint py-3 pr-10 pl-4  ${
                   selected === i
