@@ -38,13 +38,7 @@ export default function NavBar({}: Props) {
           title="Experience"
           navTo="#experience"
         />
-        <TopNavLink
-          delay="1500"
-          disabled
-          number={3}
-          title="Work"
-          navTo="#work"
-        />
+        <TopNavLink delay="1500" number={3} title="Work" navTo="#work" />
         <TopNavLink delay="1750" number={4} title="Contact" navTo="#contact" />
         <a
           data-aos="fade-down"

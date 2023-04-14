@@ -10,6 +10,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import FBapp from "../firebase";
 import { getAnalytics } from "firebase/analytics";
+import ProjectItems from "./components/ProjectItem/ProjectItems";
 
 function App() {
   const handleScroll = (event: any) => {
@@ -33,15 +34,9 @@ function App() {
         <Section className="items-center" id="experience">
           <WorkedPlacesSelector />
         </Section>
-        {/* <Section id="work" className="items-center">
-          <Player
-            src="https://assets3.lottiefiles.com/packages/lf20_z215qtts.json"
-            className="player"
-            loop
-            autoplay
-            style={{ height: "500px", width: "500px" }}
-          />
-        </Section> */}
+        <Section id="work" className="items-center">
+          <ProjectItems />
+        </Section>
         <Section className="pt-0 pb-0 mb-0 h-[80vh] md:h-[90vh]" id="contact">
           <ContactMe />
         </Section>

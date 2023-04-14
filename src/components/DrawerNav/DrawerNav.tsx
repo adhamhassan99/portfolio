@@ -50,7 +50,6 @@ const DrawerNav = (props: Props) => {
           <TopNavLink
             onNav={() => setActive(!active)}
             drawer
-            disabled
             number={3}
             title="Work"
             navTo="#work"
