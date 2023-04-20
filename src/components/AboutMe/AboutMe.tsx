@@ -17,12 +17,12 @@ const skills = [
 
 export default function AboutMe({}: Props) {
   return (
-    <div data-aos="fade-up" className="mt-3">
+    <div data-aos="fade" className="mt-2">
       <div className="flex-col flex h-full max-w-4xl">
         <SectionHeader number={1} title="About Me" />
         <div className="flex justify-between mt-14 flex-1 gap-6 flex-wrap">
           <div className="flex flex-col text-Slate md:w-3/4 gap-5 max-w-lg mx-auto">
-            <div data-aos="fade-up" className="">
+            <div data-aos="fade" className="">
               Hello! My name is Adham Hassan and my passion is creating software
               for both web and mobile. My interest in development started in
               2021 when I had to learn and create a backend using Django. Since

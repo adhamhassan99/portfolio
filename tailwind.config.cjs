@@ -15,6 +15,9 @@ module.exports = {
         greenTint: "rgba(100, 255, 218, 0.1)",
         GreenSecondary: "#53d3b9",
       },
+      aspectRatio: {
+        "4/3": "1 / 5",
+      },
     },
   },
   plugins: [],
