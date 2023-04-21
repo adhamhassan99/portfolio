@@ -9,7 +9,7 @@ type Props = {};
 const FixedSocials = (props: Props) => {
   const handleCopy = () => {
     navigator.clipboard.writeText("adham.hassan7499@gmail.com");
-    toast.success("Email copied to clipboard", {
+    toast.info("Email copied to clipboard", {
       position: "top-center",
       autoClose: 2000,
       hideProgressBar: false,
@@ -18,6 +18,8 @@ const FixedSocials = (props: Props) => {
       draggable: true,
       progress: undefined,
       theme: "dark",
+      progressStyle: { backgroundColor: "#64ffda" },
+      icon: false,
     });
   };
   const notify = () => toast("Wow so easy!");
