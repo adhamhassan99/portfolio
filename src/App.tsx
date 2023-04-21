@@ -34,7 +34,7 @@ function App() {
         <Section className="items-center" id="experience">
           <WorkedPlacesSelector />
         </Section>
-        <Section id="work" className="items-center">
+        <Section id="work" className="">
           <ProjectItems />
         </Section>
         <Section className="pt-0 pb-0 mb-0 h-[80vh] md:h-[90vh]" id="contact">
