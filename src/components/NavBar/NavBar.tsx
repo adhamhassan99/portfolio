@@ -26,7 +26,7 @@ export default function NavBar({}: Props) {
         !bgSemi ? "transparent" : "Navy"
       } w-full z-50  before:bg-Navy before:absolute before:h-full before:w-screen before:opacity-95 before:drop-shadow-md  before:right-0 before:top-0`}
     >
-      <a data-aos="fade-down" data-aos-once="true" href="#hero">
+      <a data-aos="fade-down" data-aos-once="true" href="">
         <img src={dp} className="w-14 h-14 rounded-full" />
       </a>
 
