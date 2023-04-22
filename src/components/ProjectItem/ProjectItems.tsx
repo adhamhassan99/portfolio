@@ -8,7 +8,10 @@ type Props = {};
 const ProjectItems = (props: Props) => {
   return (
     <div className="w-full xl:px-32  flex flex-col items-center">
-      <div className="text-LightestSlate text-4xl font-medium mb-12">
+      <div
+        data-aos="fade"
+        className="text-LightestSlate text-4xl font-medium mb-12"
+      >
         My Projects
       </div>
       {/* {projects.map((item, index) => {
@@ -46,7 +49,7 @@ const ProjectItems = (props: Props) => {
       })} */}
       <div className="mt-0 grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {projects.sort().map((item, index) => (
-          <GridItem {...item} />
+          <GridItem delay={250 * index} {...item} />
         ))}
       </div>
     </div>

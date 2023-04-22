@@ -16,7 +16,7 @@ type Props = {
 
 const WorkItem = ({ activeId, workItems }: Props) => {
   return (
-    <div className="flex flex-col md:px-7 md:py-2">
+    <div data-aos="fade" className="flex flex-col md:px-7 md:py-2">
       <WorkItemHeader
         company={workItems[activeId].company}
         position={workItems[activeId].position}
@@ -26,6 +26,7 @@ const WorkItem = ({ activeId, workItems }: Props) => {
       <ul className="mt-5 space-y-4">
         {workItems[activeId].description.map((item, index) => (
           <li
+            data-aos="fade"
             className=" text-LightSlate before:content-['▶'] before:text-Green before:stroke-Green before:text-xs before:mr-4 max-w-lg"
             key={index}
           >

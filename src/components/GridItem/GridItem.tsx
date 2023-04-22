@@ -10,6 +10,7 @@ type Props = {
   projectLink?: string;
   githubLink?: string;
   previewImg: string;
+  delay?: number;
 };
 
 function GridItem({
@@ -19,9 +20,14 @@ function GridItem({
   projectLink,
   projectName,
   techUsed,
+  delay = 50,
 }: Props) {
   return (
-    <div className="bg-LightNavy px-7 py-6 rounded-md flex flex-col group hover:cursor-pointer hover:-translate-y-2 transition duration-300">
+    <div
+      data-aos="fade"
+      data-aos-delay={delay}
+      className="bg-LightNavy px-7 py-6 rounded-md flex flex-col group hover:cursor-pointer hover:-translate-y-2 transition duration-300"
+    >
       <div className="flex justify-between">
         <FolderIcon className="stroke-Green" />
         <div className="flex gap-5">

@@ -7,7 +7,7 @@ type Props = {
 
 const SectionHeader = (props: Props) => {
   return (
-    <div className="flex gap-3 items-center">
+    <div data-aos="fade" className="flex gap-3 items-center">
       <p className="text-Green text-xl font-semibold">
         {props.number < 10 ? `0${props.number}` : props.number}.
       </p>

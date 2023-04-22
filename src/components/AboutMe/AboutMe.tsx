@@ -29,7 +29,7 @@ export default function AboutMe({}: Props) {
               then I have been hooked and started expanding my skillset
               everyday.
             </div>
-            <div data-aos="fade-up">
+            <div data-aos="fade">
               Fast-forward to today, I had the chance to get employed right
               after my graduation by 1 month in a{" "}
               <a
@@ -41,16 +41,16 @@ export default function AboutMe({}: Props) {
               </a>{" "}
               in Cairo/Egypt.
             </div>
-            <div data-aos="fade-up" className="">
+            <div data-aos="fade" className="">
               I am currently working in team of 6 talented developers on a{" "}
               <BlueText text="React Native" link="https://reactnative.dev/" />{" "}
               application for <BlueText text="Android" /> and{" "}
               <BlueText text="iOS" /> .
             </div>
-            <div data-aos="fade-up" className="">
+            <div data-aos="fade" className="">
               Here are some technologies I have been working with recently:
             </div>
-            <div data-aos="fade-up" className="grid gap-4  grid-cols-2">
+            <div data-aos="fade" className="grid gap-4  grid-cols-2">
               {skills.map((skill, index) => {
                 return (
                   <div
