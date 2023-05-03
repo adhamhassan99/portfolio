@@ -44,7 +44,7 @@ export default function NavBar({}: Props) {
           data-aos="fade-down"
           data-aos-duration="2000"
           data-aos-once="true"
-          href="../src/assets/Resume.pdf"
+          href="https://drive.google.com/file/d/18RyCBZWlSSLwAiYZ90O6kf3IY9szPTLP/view?usp=share_link"
           target="_blank"
           className="transition-colors duration-300 text-Green text-sm border-Green border-2 h-fit px-3 py-2 rounded-md  hover:bg-greenTint hover:text-Green"
         >
