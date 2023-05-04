@@ -32,7 +32,7 @@ function GridItem({
         <FolderIcon className="stroke-Green" />
         <div className="flex gap-5">
           {githubLink && (
-            <a target="_blank" href={projectLink}>
+            <a target="_blank" href={githubLink}>
               <GithubIcon
                 width={20}
                 className="stroke-LightestSlate hover:cursor-pointer hover:stroke-Green fill-none"

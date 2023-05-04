@@ -46,4 +46,22 @@ export const projects = [
     githubLink: "https://github.com/adhamhassan99/ZTM_E-commerce_CRWN",
     previewImg: dash,
   },
+  {
+    projectName: "Pinterest Clone",
+    projectDescription:
+      "Pinterest Mobile App clone using React Native and Firebase for Authentication",
+    techUsed: [
+      "React Native",
+      "TypeScript",
+      "Styled-Components",
+      "Redux Toolkit",
+      "TanStack React Query",
+      "Firebase",
+      "Shopify FlashList",
+      "Unsplash Developer API",
+    ],
+    projectLink:
+      "https://drive.google.com/file/d/18Up7wBY1MmMQ69Am08Nfn2JezzeeeXep/view?usp=share_link",
+    githubLink: "https://github.com/adhamhassan99/PinterestClone",
+  },
 ];
