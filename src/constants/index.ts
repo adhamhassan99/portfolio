@@ -1,24 +1,6 @@
 import dash from "../assets/dash.png";
 export const projects = [
   {
-    projectName: "Automotive Dashboard",
-    projectDescription:
-      "A Dashboard for renting cars and viewing them and their statistics. Implemented as a first React project",
-    techUsed: [
-      "React",
-      "TypeScript",
-      "SASS",
-      "Firebase Authentication",
-      "Firebase Firestore",
-      "Redux",
-    ],
-    projectLink: "https://autodashboard.vercel.app/auth/signin",
-    githubLink:
-      "https://github.com/adhamhassan99/AutomotiveDashboard/tree/main/auto-dash",
-
-    previewImg: dash,
-  },
-  {
     projectName: "Weather App",
     projectDescription:
       "A Weather app that uses the open weather service to provide weather information based on desired locaation",
@@ -63,5 +45,23 @@ export const projects = [
     projectLink:
       "https://drive.google.com/file/d/18Up7wBY1MmMQ69Am08Nfn2JezzeeeXep/view?usp=share_link",
     githubLink: "https://github.com/adhamhassan99/PinterestClone",
+  },
+  {
+    projectName: "Automotive Dashboard",
+    projectDescription:
+      "A Dashboard for renting cars and viewing them and their statistics. Implemented as a first React project",
+    techUsed: [
+      "React",
+      "TypeScript",
+      "SASS",
+      "Firebase Authentication",
+      "Firebase Firestore",
+      "Redux",
+    ],
+    projectLink: "https://autodashboard.vercel.app/auth/signin",
+    githubLink:
+      "https://github.com/adhamhassan99/AutomotiveDashboard/tree/main/auto-dash",
+
+    previewImg: dash,
   },
 ];

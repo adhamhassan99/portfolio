@@ -9,7 +9,7 @@ type Props = {
   techUsed: string[];
   projectLink?: string;
   githubLink?: string;
-  previewImg: string;
+  previewImg?: string;
   delay?: number;
 };
 
