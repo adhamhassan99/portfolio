@@ -2,6 +2,8 @@ import React from "react";
 import { ReactComponent as FolderIcon } from "../../assets/FolderIcon.svg";
 import { ReactComponent as LinkIcon } from "../../assets/LinkIcon.svg";
 import { ReactComponent as GithubIcon } from "../../assets/Github.svg";
+import { ReactComponent as AppStore } from "../../assets/apple.svg";
+import { ReactComponent as GoogleStore } from "../../assets/google.svg";
 
 type Props = {
   projectName: string;
@@ -11,6 +13,8 @@ type Props = {
   githubLink?: string;
   previewImg?: string;
   delay?: number;
+  googlePlayLink?: string;
+  appStoreLink?: string;
 };
 
 function GridItem({
@@ -21,6 +25,8 @@ function GridItem({
   projectName,
   techUsed,
   delay = 50,
+  appStoreLink,
+  googlePlayLink,
 }: Props) {
   return (
     <div
@@ -44,6 +50,26 @@ function GridItem({
               <LinkIcon
                 width={20}
                 className="stroke-LightestSlate hover:cursor-pointer hover:stroke-Green"
+              />
+            </a>
+          )}
+          {appStoreLink && (
+            <a title="Apple Store app link" target="_blank" href={appStoreLink}>
+              <AppStore
+                width={30}
+                className="stroke-LightestSlate hover:cursor-pointer hover:stroke-Green  h-10"
+              />
+            </a>
+          )}
+          {googlePlayLink && (
+            <a
+              title="Google Play Store app link"
+              target="_blank"
+              href={googlePlayLink}
+            >
+              <GoogleStore
+                width={20}
+                className="stroke-LightestSlate hover:cursor-pointer hover:stroke-Green  h-10"
               />
             </a>
           )}
