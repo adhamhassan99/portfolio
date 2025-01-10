@@ -10,7 +10,8 @@ const skills = [
   "React Native",
   "JavaScript",
   "TypeScript",
-  "Next JS",
+  "Next.js",
+  "Expo",
   "Python",
   "Django",
 ];
@@ -23,29 +24,25 @@ export default function AboutMe({}: Props) {
         <div className="flex justify-between mt-14 flex-1 gap-6 flex-wrap">
           <div className="flex flex-col text-Slate md:w-3/4 gap-5 max-w-lg mx-auto">
             <div data-aos="fade" className="">
-              Hello! My name is Adham Hassan and my passion is creating software
-              for both web and mobile. My interest in development started in
-              2021 when I had to learn and create a backend using Django. Since
-              then I have been hooked and started expanding my skillset
-              everyday.
+              Building solutions in the Banking, Governmental, Medical and other
+              fields, I have always been passionate about building software that
+              solves real-world problems.
             </div>
             <div data-aos="fade">
-              Fast-forward to today, I had the chance to get employed right
-              after my graduation by 1 month in a{" "}
+              Currently working as a Frontend Engineer in the{" "}
+              <span className="bg-gradient-to-r from-[#AD1B02] to-[#E88D14] bg-clip-text text-transparent hover:text-transparent">
+                Applied AI
+              </span>{" "}
+              team at{" "}
               <a
-                href="https://www.ejada.com/"
+                className="bg-gradient-to-r from-[#AD1B02] to-[#E88D14] bg-clip-text text-transparent hover:text-transparent"
+                href="https://www.pwc.com/m1/en/careers/egypt-technology-innovation-centre.html"
                 target="_blank"
-                className="text-Green before:w-0 after:w-0 hover:after:w-64 hover:after:duration-500 hover:after:h-[2px] hover:after:bg-Green after:absolute after:bottom-[1.3rem] after:left-[12.4rem] hover:text-Green"
               >
-                Saudi Arabian based tech company
-              </a>{" "}
-              in Cairo/Egypt.
-            </div>
-            <div data-aos="fade" className="">
-              I am currently working in team of 6 talented developers on a{" "}
-              <BlueText text="React Native" link="https://reactnative.dev/" />{" "}
-              application for <BlueText text="Android" /> and{" "}
-              <BlueText text="iOS" /> .
+                PwC ETIC
+              </a>
+              , I have been working on solutions that use the power of GenAI and
+              Machine Learning to solve real-world problems.
             </div>
             <div data-aos="fade" className="">
               Here are some technologies I have been working with recently:

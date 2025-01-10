@@ -12,9 +12,8 @@ const ContactMe = (props: Props) => {
             Get In Touch
           </p>
           <p className="text-lg text-center text-Slate font-bold max-w-2xl">
-            Although I’m not currently looking for any new opportunities, my
-            inbox is always open. Whether you have a question or just want to
-            say hi, I’ll try my best to get back to you!
+            Let's connect! I'm always open to new projects, creative ideas, or
+            just a chat.
           </p>
           <a
             href="mailto:adham.hassan7499@gmail.com"

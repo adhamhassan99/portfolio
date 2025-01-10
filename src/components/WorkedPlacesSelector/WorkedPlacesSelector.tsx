@@ -6,10 +6,26 @@ type Props = {};
 
 const workExperience = [
   {
+    company: "PwC ETIC",
+    companySite:
+      "https://www.pwc.com/m1/en/careers/egypt-technology-innovation-centre.html",
+    position: "Applied AI Frontend Engineer",
+    date: "November 2023 - Present",
+    description: [
+      "Owned End-to-End development of multiple POCs and MVPs.",
+      "Initiated and led the development of our AI platform 'AI Studio' .",
+      "Onboarded and mentored new team members.",
+      "Collaborated with the backend team to design and implement RESTful APIs.",
+      "Implemented Unit Tests for the frontend codebase.",
+      "Mentored Interns through a 3 month internship period.",
+      "Implemented and Integrated Feature Flags.",
+    ],
+  },
+  {
     company: "Ejada Systems Ltd.",
     companySite: "https://www.ejada.com",
     position: "Software Engineer",
-    date: "August 2022 - Present",
+    date: "August 2022 - November 2023",
     description: [
       "Implemented multiple user flows to fulfill business needs.",
       "Enhanced performance by eliminating duplicate query call due to unnecessary side effects resulting in 10% decrease in bandwidth usage.",
@@ -36,7 +52,6 @@ const WorkedPlacesSelector = (props: Props) => {
           {workExperience.map((value, i) => {
             return (
               <div
-                data-aos="fade"
                 key={i}
                 onClick={() => handleSelection(i)}
                 className={`text-start transition duration-500  hover:cursor-pointer hover:text-Green hover:bg-greenTint py-3 pr-10 pl-4  ${

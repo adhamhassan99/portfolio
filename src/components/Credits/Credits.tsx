@@ -8,9 +8,28 @@ const Credits = (props: Props) => {
   return (
     <div className="flex flex-col items-center pb-6">
       <div className="xl:hidden flex mb-4 items-center gap-24">
-        <GithubSVG className="fill-Slate hover:fill-Green " />
-        <TwitterSVG className="fill-Slate hover:fill-Green " />
-        <LinkedINSVG className="fill-Slate hover:fill-Green " />
+        <a
+          title="GitHub"
+          href="https://github.com/adhamhassan99"
+          target="_blank"
+        >
+          <GithubSVG className="fill-Slate hover:fill-Green " />
+        </a>
+        <a
+          title="Twitter"
+          href="https://twitter.com/adhamhassan99"
+          target="_blank"
+        >
+          <TwitterSVG className="fill-Slate hover:fill-Green " />
+        </a>
+
+        <a
+          title="LinkedIn"
+          href="https://www.linkedin.com/in/adhamhassanabdelwahab/"
+          target="_blank"
+        >
+          <LinkedINSVG className="fill-Slate hover:fill-Green " />
+        </a>
       </div>
       <div className="flex gap-3 text-sm">
         <a
