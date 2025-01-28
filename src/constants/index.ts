@@ -39,6 +39,23 @@ export const projects = [
   //   previewImg: dash,
   // },
   {
+    projectName: "Fight Roster",
+    projectDescription:
+      "A WebApp that serves as a platform for MMA fighters to find matches and register through clubs in different fight clubs",
+    techUsed: [
+      "React",
+      "TypeScript",
+      "Tanstack Query",
+      "Vite,js",
+      "shadcn/ui",
+      "React-Hook-Form",
+      "TailwindCss",
+    ],
+    projectLink:
+      "https://www.upwork.com/freelancers/~01f15e7cac2f84b611?p=1882960128849387520",
+    previewImg: dash,
+  },
+  {
     projectName: "Pinterest Clone",
     projectDescription:
       "Pinterest Mobile App clone using React Native and Firebase for Authentication",
