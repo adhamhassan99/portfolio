@@ -58,3 +58,38 @@ test.describe("Portfolio smoke tests", () => {
     expect(animationName === "none" || animationName === "").toBeTruthy();
   });
 });
+
+test.describe("system color scheme", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.removeItem("ledger-mode");
+    });
+  });
+
+  test.describe("dark preference", () => {
+    test.use({ colorScheme: "dark" });
+
+    test("applies the dark theme class", async ({ page }) => {
+      await page.goto("/");
+      await expect(page.locator("html")).toHaveClass(/dark/);
+    });
+  });
+
+  test.describe("light preference", () => {
+    test.use({ colorScheme: "light" });
+
+    test("does not apply the dark theme class", async ({ page }) => {
+      await page.goto("/");
+      await expect(page.locator("html")).not.toHaveClass(/dark/);
+    });
+  });
+
+  test.describe("no preference", () => {
+    test.use({ colorScheme: "no-preference" });
+
+    test("falls back to light theme", async ({ page }) => {
+      await page.goto("/");
+      await expect(page.locator("html")).not.toHaveClass(/dark/);
+    });
+  });
+});
