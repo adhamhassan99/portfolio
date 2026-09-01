@@ -42,15 +42,40 @@ pnpm build && pnpm test:e2e
 
 Static export (`output: "export"`) — no secrets required; contact is email-only for v1.
 
+### Cloudflare Workers (recommended)
+
+This project deploys as a Cloudflare Worker with static assets via `wrangler.jsonc`.
+
+**Workers Builds settings** (in the [Cloudflare dashboard](https://dash.cloudflare.com/)):
+
+| Setting | Value |
+|---------|-------|
+| Production branch | `main` |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Output directory | `out` |
+| Node.js version | 20 |
+
+Local deploy:
+
+```bash
+npm run deploy
+```
+
+Validate config without deploying:
+
+```bash
+npm run cf:check
+```
+
 ### Cloudflare Pages
 
-1. Connect this repo in the [Cloudflare Pages dashboard](https://dash.cloudflare.com/?to=/:account/pages).
-2. Use these build settings:
-   - **Framework preset:** Next.js (Static HTML Export)
-   - **Build command:** `pnpm install && pnpm build`
-   - **Build output directory:** `out`
-   - **Node.js version:** 20
-3. Deploy.
+Also works via the [Cloudflare Pages dashboard](https://dash.cloudflare.com/?to=/:account/pages):
+
+- **Framework preset:** Next.js (Static HTML Export)
+- **Build command:** `npm run build`
+- **Build output directory:** `out`
+- **Node.js version:** 20
 
 ### Vercel
 
