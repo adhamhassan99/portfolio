@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Flowlens agent observability dashboard placeholder">
+  <rect width="1600" height="900" fill="#F7F5F2"/>
+
+  <!-- sidebar -->
+  <rect x="0" y="0" width="232" height="900" fill="#FFFFFF"/>
+  <line x1="232" y1="0" x2="232" y2="900" stroke="#E4DFD8"/>
+  <rect x="32" y="40" width="22" height="22" rx="6" fill="#A0562F"/>
+  <text x="66" y="58" font-family="Georgia, serif" font-size="17" fill="#2A2E33">Flowlens</text>
+  <rect x="24" y="104" width="184" height="38" rx="9" fill="#F3E6DC"/>
+  <rect x="40" y="117" width="12" height="12" rx="3" fill="#A0562F"/>
+  <text x="64" y="128" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#A0562F">Live runs</text>
+  <rect x="40" y="163" width="12" height="12" rx="3" fill="#D6D1C9"/>
+  <text x="64" y="174" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#8A8F96">Regressions</text>
+  <rect x="40" y="209" width="12" height="12" rx="3" fill="#D6D1C9"/>
+  <text x="64" y="220" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#8A8F96">Traces</text>
+  <rect x="40" y="255" width="12" height="12" rx="3" fill="#D6D1C9"/>
+  <text x="64" y="266" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#8A8F96">Agents</text>
+  <rect x="40" y="301" width="12" height="12" rx="3" fill="#D6D1C9"/>
+  <text x="64" y="312" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#8A8F96">Settings</text>
+
+  <!-- top bar -->
+  <rect x="232" y="0" width="1368" height="76" fill="#FFFFFF"/>
+  <line x1="232" y1="76" x2="1600" y2="76" stroke="#E4DFD8"/>
+  <text x="272" y="46" font-family="Georgia, serif" font-size="20" fill="#2A2E33">Agent observability</text>
+  <rect x="1188" y="24" width="188" height="30" rx="15" fill="#F7F5F2" stroke="#E4DFD8"/>
+  <text x="1208" y="44" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#8A8F96">Last 24 hours</text>
+  <circle cx="1436" cy="39" r="6" fill="#A0562F"/>
+  <text x="1452" y="44" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#6B7178">Streaming</text>
+
+  <!-- stat cards -->
+  <rect x="272" y="116" width="300" height="118" rx="14" fill="#FFFFFF" stroke="#E4DFD8"/>
+  <text x="300" y="150" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="0.9" fill="#8A8F96">RUNS OBSERVED</text>
+  <text x="300" y="196" font-family="Georgia, serif" font-size="32" fill="#2A2E33">12,480</text>
+
+  <rect x="596" y="116" width="300" height="118" rx="14" fill="#FFFFFF" stroke="#E4DFD8"/>
+  <text x="624" y="150" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="0.9" fill="#8A8F96">CAUGHT PRE-SHIP</text>
+  <text x="624" y="196" font-family="Georgia, serif" font-size="32" fill="#A0562F">94</text>
+
+  <rect x="920" y="116" width="300" height="118" rx="14" fill="#FFFFFF" stroke="#E4DFD8"/>
+  <text x="948" y="150" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="0.9" fill="#8A8F96">MEDIAN DETECTION</text>
+  <text x="948" y="196" font-family="Georgia, serif" font-size="32" fill="#2A2E33">1.4s</text>
+
+  <rect x="1244" y="116" width="300" height="118" rx="14" fill="#FFFFFF" stroke="#E4DFD8"/>
+  <text x="1272" y="150" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="0.9" fill="#8A8F96">ACTIVE AGENTS</text>
+  <text x="1272" y="196" font-family="Georgia, serif" font-size="32" fill="#2A2E33">37</text>
+
+  <!-- chart -->
+  <rect x="272" y="266" width="948" height="332" rx="14" fill="#FFFFFF" stroke="#E4DFD8"/>
+  <text x="300" y="300" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="0.9" fill="#8A8F96">ANOMALY SCORE OVER TIME</text>
+  <line x1="300" y1="352" x2="1192" y2="352" stroke="#F1EDE7"/>
+  <line x1="300" y1="424" x2="1192" y2="424" stroke="#F1EDE7"/>
+  <line x1="300" y1="496" x2="1192" y2="496" stroke="#F1EDE7"/>
+  <line x1="300" y1="556" x2="1192" y2="556" stroke="#E4DFD8"/>
+  <path d="M300 520L376 498L452 508L528 462L604 476L680 404L756 430L832 356L908 392L984 344L1060 372L1136 330L1192 348" fill="none" stroke="#A0562F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M300 520L376 498L452 508L528 462L604 476L680 404L756 430L832 356L908 392L984 344L1060 372L1136 330L1192 348L1192 556L300 556Z" fill="#A0562F" fill-opacity="0.07"/>
+  <path d="M300 542L376 534L452 540L528 522L604 530L680 508L756 518L832 496L908 506L984 490L1060 500L1136 484L1192 492" fill="none" stroke="#D6D1C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="832" cy="356" r="5.5" fill="#FFFFFF" stroke="#A0562F" stroke-width="2.5"/>
+  <rect x="768" y="304" width="128" height="34" rx="8" fill="#2A2E33"/>
+  <text x="786" y="326" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#FFFFFF">regression &#183; 08:42</text>
+
+  <!-- event feed -->
+  <rect x="1244" y="266" width="300" height="332" rx="14" fill="#FFFFFF" stroke="#E4DFD8"/>
+  <text x="1272" y="300" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="0.9" fill="#8A8F96">LIVE EVENTS</text>
+  <circle cx="1278" cy="336" r="4" fill="#A0562F"/>
+  <rect x="1294" y="329" width="196" height="9" rx="4.5" fill="#E4DFD8"/>
+  <rect x="1294" y="346" width="128" height="8" rx="4" fill="#F1EDE7"/>
+  <circle cx="1278" cy="392" r="4" fill="#D6D1C9"/>
+  <rect x="1294" y="385" width="172" height="9" rx="4.5" fill="#E4DFD8"/>
+  <rect x="1294" y="402" width="104" height="8" rx="4" fill="#F1EDE7"/>
+  <circle cx="1278" cy="448" r="4" fill="#D6D1C9"/>
+  <rect x="1294" y="441" width="196" height="9" rx="4.5" fill="#E4DFD8"/>
+  <rect x="1294" y="458" width="140" height="8" rx="4" fill="#F1EDE7"/>
+  <circle cx="1278" cy="504" r="4" fill="#D6D1C9"/>
+  <rect x="1294" y="497" width="160" height="9" rx="4.5" fill="#E4DFD8"/>
+  <rect x="1294" y="514" width="112" height="8" rx="4" fill="#F1EDE7"/>
+  <circle cx="1278" cy="560" r="4" fill="#D6D1C9"/>
+  <rect x="1294" y="553" width="182" height="9" rx="4.5" fill="#E4DFD8"/>
+
+  <!-- table -->
+  <rect x="272" y="630" width="1272" height="232" rx="14" fill="#FFFFFF" stroke="#E4DFD8"/>
+  <text x="300" y="664" font-family="Helvetica, Arial, sans-serif" font-size="11" letter-spacing="0.9" fill="#8A8F96">FLAGGED CHANGES</text>
+  <line x1="300" y1="684" x2="1516" y2="684" stroke="#EFEAE3"/>
+  <rect x="300" y="702" width="10" height="10" rx="3" fill="#A0562F"/>
+  <rect x="330" y="702" width="280" height="10" rx="5" fill="#E4DFD8"/>
+  <rect x="700" y="702" width="180" height="10" rx="5" fill="#F1EDE7"/>
+  <rect x="980" y="702" width="120" height="10" rx="5" fill="#F1EDE7"/>
+  <rect x="1400" y="700" width="116" height="14" rx="7" fill="#F3E6DC"/>
+  <line x1="300" y1="738" x2="1516" y2="738" stroke="#EFEAE3"/>
+  <rect x="300" y="756" width="10" height="10" rx="3" fill="#D6D1C9"/>
+  <rect x="330" y="756" width="232" height="10" rx="5" fill="#E4DFD8"/>
+  <rect x="700" y="756" width="150" height="10" rx="5" fill="#F1EDE7"/>
+  <rect x="980" y="756" width="140" height="10" rx="5" fill="#F1EDE7"/>
+  <rect x="1400" y="754" width="116" height="14" rx="7" fill="#F1EDE7"/>
+  <line x1="300" y1="792" x2="1516" y2="792" stroke="#EFEAE3"/>
+  <rect x="300" y="810" width="10" height="10" rx="3" fill="#D6D1C9"/>
+  <rect x="330" y="810" width="304" height="10" rx="5" fill="#E4DFD8"/>
+  <rect x="700" y="810" width="164" height="10" rx="5" fill="#F1EDE7"/>
+  <rect x="980" y="810" width="96" height="10" rx="5" fill="#F1EDE7"/>
+  <rect x="1400" y="808" width="116" height="14" rx="7" fill="#F1EDE7"/>
+</svg>

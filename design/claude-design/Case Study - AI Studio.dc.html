@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&amp;family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;
+--t-bg-primary:oklch(0.985 0.004 85);--t-bg-secondary:oklch(0.966 0.006 85);--t-bg-sunken:oklch(0.945 0.008 85);--t-bg-elevated:oklch(1 0 0);--t-bg-hover:oklch(0.955 0.007 85);
+--t-text-primary:oklch(0.245 0.015 250);--t-text-secondary:oklch(0.445 0.014 250);--t-text-muted:oklch(0.520 0.012 250);--t-text-on-solid:oklch(1 0 0);
+--t-accent:oklch(0.530 0.128 48);--t-accent-hover:oklch(0.480 0.132 45);--t-accent-ring:oklch(0.620 0.140 50);
+--t-line-subtle:oklch(0.932 0.005 85);--t-line:oklch(0.865 0.008 85);--t-line-strong:oklch(0.650 0.010 85);
+--t-solid:oklch(0.245 0.015 250);--t-solid-hover:oklch(0.320 0.015 250);
+--t-positive:oklch(0.500 0.085 155);--t-selection-bg:oklch(0.900 0.050 60);
+--t-stripe:oklch(0.955 0.006 85);}
+.dark{color-scheme:dark;
+--t-bg-primary:oklch(0.185 0.012 250);--t-bg-secondary:oklch(0.218 0.013 250);--t-bg-sunken:oklch(0.150 0.012 250);--t-bg-elevated:oklch(0.252 0.014 250);--t-bg-hover:oklch(0.240 0.013 250);
+--t-text-primary:oklch(0.955 0.006 85);--t-text-secondary:oklch(0.775 0.009 85);--t-text-muted:oklch(0.635 0.011 250);--t-text-on-solid:oklch(0.185 0.012 250);
+--t-accent:oklch(0.760 0.120 58);--t-accent-hover:oklch(0.830 0.100 62);--t-accent-ring:oklch(0.760 0.120 58);
+--t-line-subtle:oklch(0.268 0.013 250);--t-line:oklch(0.340 0.013 250);--t-line-strong:oklch(0.535 0.014 250);
+--t-solid:oklch(0.955 0.006 85);--t-solid-hover:oklch(0.880 0.007 85);
+--t-positive:oklch(0.740 0.100 155);--t-selection-bg:oklch(0.360 0.060 52);
+--t-stripe:oklch(0.218 0.013 250);}
+html{scroll-behavior:smooth;scroll-padding-top:5rem;}
+body{margin:0;background:var(--t-bg-primary);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-variant-numeric:tabular-nums;}
+::selection{background:var(--t-selection-bg);color:var(--t-text-primary);}
+a{color:var(--t-accent);}a:hover{color:var(--t-accent-hover);}
+:focus-visible{outline:none;box-shadow:0 0 0 2px var(--t-bg-primary),0 0 0 4px var(--t-accent-ring);border-radius:4px;}
+.nextrow{transition:background 220ms cubic-bezier(0.22,1,0.36,1);}
+.nextrow:hover{background:var(--t-bg-hover);}
+.nextrow .prow-arrow{display:inline-block;transition:transform 140ms cubic-bezier(0.22,1,0.36,1);}
+.nextrow:hover .prow-arrow{transform:translate(3px,-3px);}
+@keyframes pageEnter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.page-enter{animation:pageEnter 280ms cubic-bezier(0.22,1,0.36,1) both;}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important;}}
+</style>
+</helmet>
+<div class="page-root {{ themeClass }}" data-screen-label="Case Study — AI Studio" style="min-height:100vh;background:var(--t-bg-primary);color:var(--t-text-primary);font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;font-size:1.0625rem;line-height:1.65;transition:background 220ms cubic-bezier(0.33,1,0.68,1),color 220ms cubic-bezier(0.33,1,0.68,1)">
+
+  <nav style="position:sticky;top:0;z-index:50;height:4rem;display:flex;align-items:center;background:color-mix(in oklch, var(--t-bg-primary) 82%, transparent);backdrop-filter:blur(12px) saturate(1.4);-webkit-backdrop-filter:blur(12px) saturate(1.4);border-bottom:1px solid var(--t-line-subtle)">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+      <a href="Home.dc.html" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-primary);text-decoration:none" style-hover="color:var(--t-accent)">Adham Abdelwahab</a>
+      <div style="display:flex;align-items:center;gap:1.25rem">
+        <a href="Home.dc.html#work" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-text-primary)">← All work</a>
+        <a href="Home.dc.html#contact" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-text-primary)">Contact</a>
+        <button onClick="{{ toggle }}" aria-label="Toggle color mode" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;background:transparent;border:1px solid var(--t-line);border-radius:4px;color:var(--t-text-secondary);padding:0.375rem 0.625rem;cursor:pointer;transition:all 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="border-color:var(--t-line-strong);color:var(--t-text-primary)">{{ modeLabel }}</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="page-enter" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:clamp(4rem, 3rem + 5vw, 7rem) clamp(2rem, 1.5rem + 2vw, 3.5rem)">
+    <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;border-bottom:1px solid var(--t-line);margin-bottom:clamp(2rem, 1.5rem + 2vw, 3rem)">
+      <span style="color:var(--t-accent)">Case study</span><span>/ 001</span>
+    </div>
+    <h1 style="font-family:'Newsreader',ui-serif,Georgia,serif;font-weight:400;font-size:clamp(2.125rem, 1.6rem + 1.9vw, 3rem);line-height:1.2;letter-spacing:-0.015em;margin:0">AI Studio</h1>
+    <p style="margin:1.25rem 0 0;font-size:1.25rem;line-height:1.45;color:var(--t-text-secondary);max-width:54ch;text-wrap:pretty">A marketplace where PwC teams build, clone, and deploy workflow-integrated AI agents via connectors and MCPs.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:1.5rem 2rem;margin-top:clamp(2rem, 1.5rem + 2vw, 3rem);padding-top:1.5rem;border-top:1px solid var(--t-line)">
+      <div style="display:flex;flex-direction:column;gap:0.375rem"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">Client</span><span style="font-size:0.9375rem">PwC Egypt Technology Innovation Centre</span></div>
+      <div style="display:flex;flex-direction:column;gap:0.375rem"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">Role</span><span style="font-size:0.9375rem">Senior Software Engineer</span></div>
+      <div style="display:flex;flex-direction:column;gap:0.375rem"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">Stack</span><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.8125rem;color:var(--t-text-secondary)">TypeScript · React · Node.js · Python · MCP</span></div>
+      <div style="display:flex;flex-direction:column;gap:0.375rem"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">Status</span><span style="font-size:0.9375rem">Shipped — internal platform</span></div>
+    </div>
+  </header>
+
+  <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto">
+    <div style="aspect-ratio:16/9;border:1px solid var(--t-line);border-radius:10px;background:repeating-linear-gradient(-45deg, var(--t-bg-secondary) 0 12px, var(--t-stripe) 12px 13px);display:flex;align-items:center;justify-content:center">
+      <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);background:var(--t-bg-primary);border:1px solid var(--t-line);border-radius:4px;padding:0.5rem 0.875rem">product UI — drop screenshot</span>
+    </div>
+  </div>
+
+  <article style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 56rem);margin-inline:auto;padding-block:clamp(4rem, 3rem + 5vw, 7rem)">
+    <div style="display:flex;flex-direction:column;gap:clamp(3rem, 2rem + 3vw, 5rem)">
+      <section>
+        <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;border-bottom:1px solid var(--t-line);margin-bottom:1.5rem"><span>01 / Problem</span></div>
+        <p style="margin:0;max-width:68ch;text-wrap:pretty">Inside a large consultancy, AI experimentation fragments fast. Every team wires up its own prototype: a chatbot here, a script there — each with its own credentials, its own integration glue, and no path from demo to something colleagues can reuse. The interesting work was happening, but it wasn't compounding.</p>
+      </section>
+      <section>
+        <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;border-bottom:1px solid var(--t-line);margin-bottom:1.5rem"><span>02 / Approach</span></div>
+        <p style="margin:0 0 1.5rem;max-width:68ch;text-wrap:pretty">AI Studio treats agents as products, not experiments. Teams compose agents from a shared library of connectors and MCP integrations, so an agent plugs into the tools people already work in rather than living as an isolated chat window. Cloning is first-class: a working agent built by one team becomes the starting point for the next, with its connector wiring intact.</p>
+        <p style="margin:0;max-width:68ch;text-wrap:pretty">Adham worked across the stack — TypeScript and React on the marketplace surface, Node.js and Python on platform services — shipping the features that make agent creation repeatable rather than one-off: connector configuration, agent cloning, and the MCP integration layer.</p>
+      </section>
+      <section>
+        <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;border-bottom:1px solid var(--t-line);margin-bottom:1.5rem"><span>03 / Outcome</span></div>
+        <p style="margin:0;max-width:68ch;text-wrap:pretty">Agent deployment became repeatable instead of bespoke: teams clone and adapt working agents rather than rebuilding from zero, and new connectors extend every agent that uses them. <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.8125rem;color:var(--t-text-muted)">[PLACEHOLDER — add shareable adoption figures before launch]</span></p>
+      </section>
+    </div>
+  </article>
+
+  <a href="Case Study - Saudi Real Estate.dc.html" class="nextrow" style="display:block;border-top:1px solid var(--t-line);color:inherit;text-decoration:none">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:2.5rem;display:flex;align-items:baseline;justify-content:space-between;gap:1rem">
+      <span style="display:flex;flex-direction:column;gap:0.375rem"><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">Next case study</span><span style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.5rem;font-weight:400">Saudi Real Estate Marketplace</span></span>
+      <span class="prow-arrow" style="font-size:1.125rem;color:var(--t-text-muted)">→</span>
+    </div>
+  </a>
+
+  <footer style="border-top:1px solid var(--t-line)">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:2rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">
+      <span>Adham Abdelwahab — Senior Software Engineer</span>
+      <span>Egypt (EET/EEST) · Flexible US/EU · © 2026</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  state = { dark: false };
+  componentDidMount() {
+    const stored = localStorage.getItem('ledger-mode');
+    const dark = this.props.theme ? this.props.theme === 'dark' : stored === 'dark';
+    if (dark !== this.state.dark) this.setState({ dark });
+  }
+  componentDidUpdate(prev) {
+    if (prev.theme !== this.props.theme && this.props.theme) this.setState({ dark: this.props.theme === 'dark' });
+  }
+  renderVals() {
+    return {
+      themeClass: this.state.dark ? 'dark' : '',
+      modeLabel: this.state.dark ? 'Light' : 'Dark',
+      toggle: () => {
+        const d = !this.state.dark;
+        this.setState({ dark: d });
+        localStorage.setItem('ledger-mode', d ? 'dark' : 'light');
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

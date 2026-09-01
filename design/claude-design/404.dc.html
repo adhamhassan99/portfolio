@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&amp;family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;
+--t-bg-primary:oklch(0.985 0.004 85);--t-bg-secondary:oklch(0.966 0.006 85);--t-bg-hover:oklch(0.955 0.007 85);
+--t-text-primary:oklch(0.245 0.015 250);--t-text-secondary:oklch(0.445 0.014 250);--t-text-muted:oklch(0.520 0.012 250);--t-text-on-solid:oklch(1 0 0);
+--t-accent:oklch(0.530 0.128 48);--t-accent-hover:oklch(0.480 0.132 45);--t-accent-ring:oklch(0.620 0.140 50);
+--t-line-subtle:oklch(0.932 0.005 85);--t-line:oklch(0.865 0.008 85);--t-line-strong:oklch(0.650 0.010 85);
+--t-solid:oklch(0.245 0.015 250);--t-solid-hover:oklch(0.320 0.015 250);--t-selection-bg:oklch(0.900 0.050 60);}
+.dark{color-scheme:dark;
+--t-bg-primary:oklch(0.185 0.012 250);--t-bg-secondary:oklch(0.218 0.013 250);--t-bg-hover:oklch(0.240 0.013 250);
+--t-text-primary:oklch(0.955 0.006 85);--t-text-secondary:oklch(0.775 0.009 85);--t-text-muted:oklch(0.635 0.011 250);--t-text-on-solid:oklch(0.185 0.012 250);
+--t-accent:oklch(0.760 0.120 58);--t-accent-hover:oklch(0.830 0.100 62);--t-accent-ring:oklch(0.760 0.120 58);
+--t-line-subtle:oklch(0.268 0.013 250);--t-line:oklch(0.340 0.013 250);--t-line-strong:oklch(0.535 0.014 250);
+--t-solid:oklch(0.955 0.006 85);--t-solid-hover:oklch(0.880 0.007 85);--t-selection-bg:oklch(0.360 0.060 52);}
+body{margin:0;background:var(--t-bg-primary);-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+::selection{background:var(--t-selection-bg);color:var(--t-text-primary);}
+a{color:var(--t-accent);}a:hover{color:var(--t-accent-hover);}
+:focus-visible{outline:none;box-shadow:0 0 0 2px var(--t-bg-primary),0 0 0 4px var(--t-accent-ring);border-radius:4px;}
+@keyframes pageEnter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.page-enter{animation:pageEnter 280ms cubic-bezier(0.22,1,0.36,1) both;}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important;}}
+</style>
+</helmet>
+<div class="page-root {{ themeClass }}" data-screen-label="404" style="min-height:100vh;display:flex;flex-direction:column;background:var(--t-bg-primary);color:var(--t-text-primary);font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;font-size:1.0625rem;line-height:1.65;transition:background 220ms cubic-bezier(0.33,1,0.68,1),color 220ms cubic-bezier(0.33,1,0.68,1)">
+
+  <nav style="height:4rem;display:flex;align-items:center;border-bottom:1px solid var(--t-line-subtle)">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+      <a href="Home.dc.html" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-primary);text-decoration:none" style-hover="color:var(--t-accent)">Adham Abdelwahab</a>
+      <button onClick="{{ toggle }}" aria-label="Toggle color mode" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;background:transparent;border:1px solid var(--t-line);border-radius:4px;color:var(--t-text-secondary);padding:0.375rem 0.625rem;cursor:pointer;transition:all 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="border-color:var(--t-line-strong);color:var(--t-text-primary)">{{ modeLabel }}</button>
+    </div>
+  </nav>
+
+  <main style="flex:1;display:flex;align-items:center">
+    <div class="page-enter" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:clamp(4rem, 3rem + 5vw, 8rem)">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;border-bottom:1px solid var(--t-line);margin-bottom:clamp(2rem, 1.5rem + 2vw, 3.5rem)">
+        <span style="color:var(--t-accent)">Error</span><span>/ 404</span>
+      </div>
+      <h1 style="font-family:'Newsreader',ui-serif,Georgia,serif;font-weight:400;font-size:clamp(2.75rem, 1.75rem + 3.6vw, 4.75rem);line-height:1.12;letter-spacing:-0.03em;margin:0;max-width:20ch;text-wrap:balance">This page doesn't exist — <em style="font-style:italic">or it shipped without a spec.</em></h1>
+      <p style="margin:1.5rem 0 0;color:var(--t-text-secondary);max-width:54ch;text-wrap:pretty">The address may be mistyped, or the page was moved. Everything worth reading is one level up.</p>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem;margin-top:2.5rem">
+        <a href="Home.dc.html" style="display:inline-flex;align-items:center;height:2.75rem;padding-inline:1.25rem;background:var(--t-solid);color:var(--t-text-on-solid);border-radius:4px;font-size:0.875rem;font-weight:500;letter-spacing:0.02em;text-decoration:none;transition:background 140ms cubic-bezier(0.22,1,0.36,1),transform 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="background:var(--t-solid-hover);color:var(--t-text-on-solid);transform:translateY(-2px)">Back to home</a>
+        <a href="Home.dc.html#work" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-text-primary)">Selected work →</a>
+      </div>
+    </div>
+  </main>
+
+  <footer style="border-top:1px solid var(--t-line)">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:2rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">
+      <span>Adham Abdelwahab — Senior Software Engineer</span>
+      <span>Egypt (EET/EEST) · Flexible US/EU · © 2026</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;section&quot;:&quot;Appearance&quot;}}">
+class Component extends DCLogic {
+  state = { dark: false };
+  componentDidMount() {
+    const stored = localStorage.getItem('ledger-mode');
+    const dark = this.props.theme ? this.props.theme === 'dark' : stored === 'dark';
+    if (dark !== this.state.dark) this.setState({ dark });
+  }
+  componentDidUpdate(prev) {
+    if (prev.theme !== this.props.theme && this.props.theme) this.setState({ dark: this.props.theme === 'dark' });
+  }
+  renderVals() {
+    return {
+      themeClass: this.state.dark ? 'dark' : '',
+      modeLabel: this.state.dark ? 'Light' : 'Dark',
+      toggle: () => {
+        const d = !this.state.dark;
+        this.setState({ dark: d });
+        localStorage.setItem('ledger-mode', d ? 'dark' : 'light');
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>

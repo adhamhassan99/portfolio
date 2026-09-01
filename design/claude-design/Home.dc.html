@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&amp;family=Schibsted+Grotesk:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;
+--t-bg-primary:oklch(0.985 0.004 85);--t-bg-secondary:oklch(0.966 0.006 85);--t-bg-sunken:oklch(0.945 0.008 85);--t-bg-elevated:oklch(1 0 0);--t-bg-hover:oklch(0.955 0.007 85);
+--t-text-primary:oklch(0.245 0.015 250);--t-text-secondary:oklch(0.445 0.014 250);--t-text-muted:oklch(0.520 0.012 250);--t-text-on-solid:oklch(1 0 0);
+--t-accent:oklch(0.530 0.128 48);--t-accent-hover:oklch(0.480 0.132 45);--t-accent-subtle:oklch(0.955 0.022 60);--t-accent-ring:oklch(0.620 0.140 50);
+--t-line-subtle:oklch(0.932 0.005 85);--t-line:oklch(0.865 0.008 85);--t-line-strong:oklch(0.650 0.010 85);
+--t-solid:oklch(0.245 0.015 250);--t-solid-hover:oklch(0.320 0.015 250);
+--t-positive:oklch(0.500 0.085 155);--t-critical:oklch(0.520 0.150 25);--t-selection-bg:oklch(0.900 0.050 60);}
+.dark{color-scheme:dark;
+--t-bg-primary:oklch(0.185 0.012 250);--t-bg-secondary:oklch(0.218 0.013 250);--t-bg-sunken:oklch(0.150 0.012 250);--t-bg-elevated:oklch(0.252 0.014 250);--t-bg-hover:oklch(0.240 0.013 250);
+--t-text-primary:oklch(0.955 0.006 85);--t-text-secondary:oklch(0.775 0.009 85);--t-text-muted:oklch(0.635 0.011 250);--t-text-on-solid:oklch(0.185 0.012 250);
+--t-accent:oklch(0.760 0.120 58);--t-accent-hover:oklch(0.830 0.100 62);--t-accent-subtle:oklch(0.290 0.045 50);--t-accent-ring:oklch(0.760 0.120 58);
+--t-line-subtle:oklch(0.268 0.013 250);--t-line:oklch(0.340 0.013 250);--t-line-strong:oklch(0.535 0.014 250);
+--t-solid:oklch(0.955 0.006 85);--t-solid-hover:oklch(0.880 0.007 85);
+--t-positive:oklch(0.740 0.100 155);--t-critical:oklch(0.700 0.140 25);--t-selection-bg:oklch(0.360 0.060 52);}
+html{scroll-behavior:smooth;scroll-padding-top:5rem;}
+body{margin:0;background:var(--t-bg-primary);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-variant-numeric:tabular-nums;}
+::selection{background:var(--t-selection-bg);color:var(--t-text-primary);}
+a{color:var(--t-accent);}a:hover{color:var(--t-accent-hover);}
+:focus-visible{outline:none;box-shadow:0 0 0 2px var(--t-bg-primary),0 0 0 4px var(--t-accent-ring);border-radius:4px;}
+/* nav scroll state */
+.sitenav{border-bottom:1px solid transparent;background:transparent;transition:background 220ms cubic-bezier(0.22,1,0.36,1),border-color 220ms cubic-bezier(0.22,1,0.36,1),backdrop-filter 220ms;}
+.scrolled .sitenav{background:color-mix(in oklch, var(--t-bg-primary) 85%, transparent);backdrop-filter:blur(8px) saturate(1.4);-webkit-backdrop-filter:blur(8px) saturate(1.4);border-bottom-color:var(--t-line-subtle);}
+/* scroll reveals — hidden only when motion is enabled via JS */
+.motion [data-reveal]{opacity:0;transform:translateY(var(--reveal-y, 14px));transition:opacity 700ms cubic-bezier(0.2,0.9,0.1,1),transform 700ms cubic-bezier(0.2,0.9,0.1,1);transition-delay:var(--reveal-delay, 0ms);}
+.motion [data-reveal].in{opacity:1;transform:none;}
+.motion .hairline-draw{transform:scaleX(0);transform-origin:left;transition:transform 700ms cubic-bezier(0.2,0.9,0.1,1) 60ms;}
+.motion .hairline-draw.in{transform:scaleX(1);}
+/* availability + promise pulse */
+@keyframes t-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.6;transform:scale(1.15)}}
+.pulse-dot{animation:t-pulse 2.5s cubic-bezier(0.65,0,0.35,1) infinite;}
+/* trust logos */
+.tlogo{opacity:0.5;transition:opacity 140ms cubic-bezier(0.22,1,0.36,1),transform 140ms cubic-bezier(0.22,1,0.36,1);}
+.tlogo:hover{opacity:0.85;transform:translateY(-2px);}
+/* project rows */
+.prow{position:relative;transition:background 220ms cubic-bezier(0.22,1,0.36,1),transform 220ms cubic-bezier(0.22,1,0.36,1);}
+.prow:hover,.prow:focus-visible{background:var(--t-bg-hover);transform:translateY(-4px);}
+.prow::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--t-line-strong);transform:scaleX(0);transform-origin:left;transition:transform 400ms cubic-bezier(0.22,1,0.36,1);}
+.prow:hover::after,.prow:focus-visible::after{transform:scaleX(1);}
+.prow .prow-arrow{display:inline-block;transition:transform 140ms cubic-bezier(0.22,1,0.36,1);}
+.prow:hover .prow-arrow,.prow:focus-visible .prow-arrow{transform:translateX(4px);}
+.prow .prow-tags{opacity:0.7;transition:transform 220ms cubic-bezier(0.22,1,0.36,1),opacity 220ms cubic-bezier(0.22,1,0.36,1) 40ms;}
+.prow:hover .prow-tags,.prow:focus-visible .prow-tags{transform:translateX(4px);opacity:1;}
+.prow:active{transform:translateY(-4px) scale(0.995);}
+/* process blocks */
+.pblock .pidx{transition:color 140ms cubic-bezier(0.22,1,0.36,1);}
+.pblock:hover .pidx{color:var(--t-accent);}
+.pblock .ptitle{transition:transform 140ms cubic-bezier(0.22,1,0.36,1);}
+.pblock:hover .ptitle{transform:translateX(4px);}
+/* service rows */
+.srow{position:relative;padding-left:1.25rem;}
+.srow::before{content:"";position:absolute;left:0;top:1.5rem;bottom:1.5rem;width:2px;background:var(--t-accent);transform:scaleY(0);transform-origin:top;transition:transform 220ms cubic-bezier(0.22,1,0.36,1);}
+.srow:hover::before{transform:scaleY(1);}
+/* stack rows */
+.strow{transition:background 140ms cubic-bezier(0.22,1,0.36,1);}
+.strow:hover{background:var(--t-bg-hover);}
+.strow .syrs{transition:color 140ms cubic-bezier(0.22,1,0.36,1);}
+.strow:hover .syrs{color:var(--t-text-secondary);}
+/* FAQ accordion */
+.faq-q{transition:color 140ms cubic-bezier(0.22,1,0.36,1);}
+.faq-btn:hover .faq-q{color:var(--t-text-primary);}
+.faq-chev{display:inline-block;transition:transform 300ms cubic-bezier(0.34,1.4,0.64,1);}
+.faq-chev.open{transform:rotate(45deg);}
+.faq-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows 380ms cubic-bezier(0.22,1,0.36,1);}
+.faq-panel.open{grid-template-rows:1fr;}
+.faq-panel > div{overflow:hidden;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{transition-duration:0.01ms !important;animation-duration:0.01ms !important;animation-iteration-count:1 !important;}
+  .motion [data-reveal]{opacity:1;transform:none;}
+  .motion .hairline-draw{transform:none;}
+  .pulse-dot{animation:none;}
+  .prow:hover{transform:none;}
+  .tlogo:hover{transform:none;}
+}
+</style>
+</helmet>
+<div class="page-root {{ themeClass }} {{ motionClass }} {{ scrolledClass }}" data-screen-label="Home" style="min-height:100vh;background:var(--t-bg-primary);color:var(--t-text-primary);font-family:'Schibsted Grotesk',ui-sans-serif,system-ui,sans-serif;font-size:1.0625rem;line-height:1.65;transition:background 220ms cubic-bezier(0.33,1,0.68,1),color 220ms cubic-bezier(0.33,1,0.68,1)">
+
+  <nav class="sitenav" style="position:sticky;top:0;z-index:50;height:4rem;display:flex;align-items:center">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem">
+      <a href="#intro" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-primary);text-decoration:none" style-hover="color:var(--t-accent)">Adham Abdelwahab</a>
+      <div style="display:flex;align-items:center;gap:1.5rem">
+        <div style="display:flex;align-items:center;gap:1.25rem">
+          <a href="#work" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent)">Work</a>
+          <a href="#process" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent)">Process</a>
+          <a href="#services" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent)">Services</a>
+          <a href="#faq" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent)">FAQ</a>
+          <a href="#contact" style="font-size:0.875rem;font-weight:500;color:var(--t-text-secondary);text-decoration:none;transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent)">Contact</a>
+        </div>
+        <button onClick="{{ toggle }}" aria-label="Toggle color mode" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;background:transparent;border:1px solid var(--t-line);border-radius:4px;color:var(--t-text-secondary);padding:0.375rem 0.625rem;cursor:pointer;transition:all 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="border-color:var(--t-line-strong);color:var(--t-text-primary)">{{ modeLabel }}</button>
+      </div>
+    </div>
+  </nav>
+
+  <header id="intro" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:clamp(5rem, 3.5rem + 6vw, 9rem) clamp(4rem, 3rem + 5vw, 8rem)">
+    <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;margin-bottom:clamp(2rem, 1.5rem + 2vw, 3.5rem);position:relative">
+      <span style="color:var(--t-accent)">01</span><span>/ Intro</span>
+      <sc-if value="{{ available }}" hint-placeholder-val="{{ true }}">
+        <span data-reveal style="--reveal-delay:60ms;margin-left:auto;display:inline-flex;align-items:center;gap:0.5rem;letter-spacing:0.09em;color:var(--t-text-secondary)"><span class="pulse-dot" style="width:7px;height:7px;border-radius:9999px;background:var(--t-positive);flex-shrink:0"></span>Available now</span>
+      </sc-if>
+      <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+    </div>
+    <h1 style="font-family:'Newsreader',ui-serif,Georgia,serif;font-weight:500;font-size:clamp(2.25rem, 5vw + 1rem, 3.5rem);line-height:1.15;letter-spacing:-0.02em;margin:0;max-width:24ch;text-wrap:balance">Adham Abdelwahab is a senior software engineer who builds full&#8209;stack products from architecture to deployment — previously at <a href="https://www.pwc.com/m1/en/careers/egypt-technology-innovation-centre.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.14em;text-decoration-color:color-mix(in oklch, var(--t-accent) 45%, transparent);transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent);text-decoration-color:var(--t-accent)">PwC</a>, <a href="https://www.ejada.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.14em;text-decoration-color:color-mix(in oklch, var(--t-accent) 45%, transparent);transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent);text-decoration-color:var(--t-accent)">Ejada</a>, <a href="https://www.orascomdh.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.14em;text-decoration-color:color-mix(in oklch, var(--t-accent) 45%, transparent);transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent);text-decoration-color:var(--t-accent)">Orascom Developments</a>, and <a href="https://magentic.ai/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.14em;text-decoration-color:color-mix(in oklch, var(--t-accent) 45%, transparent);transition:color 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="color:var(--t-accent);text-decoration-color:var(--t-accent)">Magentic&nbsp;AI</a>.</h1>
+    <div style="display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem;margin-top:clamp(2rem, 1.5rem + 2vw, 3rem)">
+      <a href="mailto:adham.hassan7499@gmail.com" data-reveal style="--reveal-delay:200ms;display:inline-flex;align-items:center;height:2.75rem;padding-inline:1.25rem;background:var(--t-solid);color:var(--t-text-on-solid);border-radius:4px;font-size:0.875rem;font-weight:500;letter-spacing:0.02em;text-decoration:none;transition:background 140ms cubic-bezier(0.22,1,0.36,1),transform 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="background:var(--t-solid-hover);color:var(--t-text-on-solid);transform:translateY(-2px)">Get in touch</a>
+      <span data-reveal style="--reveal-delay:120ms;font-size:0.9375rem;color:var(--t-text-secondary)">Independent, hands-on, accountable.</span>
+    </div>
+  </header>
+
+  <section id="trust" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-bottom:clamp(4rem, 3rem + 5vw, 8rem)">
+    <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;margin-bottom:2rem;position:relative">
+      <span style="color:var(--t-accent)">02</span><span>/ Trust</span>
+      <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:1rem 3rem">
+      <a href="https://www.pwc.com/m1/en/careers/egypt-technology-innovation-centre.html" target="_blank" rel="noopener" class="tlogo" data-reveal style="--reveal-delay:0ms;font-weight:600;font-size:1.0625rem;color:var(--t-text-primary);text-decoration:none">PwC ETIC</a>
+      <a href="https://www.ejada.com/" target="_blank" rel="noopener" class="tlogo" data-reveal style="--reveal-delay:80ms;font-weight:600;font-size:1.0625rem;color:var(--t-text-primary);text-decoration:none">Ejada Systems</a>
+      <a href="https://www.orascomdh.com/" target="_blank" rel="noopener" class="tlogo" data-reveal style="--reveal-delay:160ms;font-weight:600;font-size:1.0625rem;color:var(--t-text-primary);text-decoration:none">Orascom Developments</a>
+      <a href="https://magentic.ai/" target="_blank" rel="noopener" class="tlogo" data-reveal style="--reveal-delay:240ms;font-weight:600;font-size:1.0625rem;color:var(--t-text-primary);text-decoration:none">Magentic AI</a>
+    </div>
+  </section>
+
+  <section id="work" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-bottom:clamp(4rem, 3rem + 5vw, 8rem)">
+    <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;position:relative">
+      <span style="color:var(--t-accent)">03</span><span>/ Selected work</span>
+      <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+    </div>
+    <a href="Case Study - AI Studio.dc.html" class="prow" data-reveal style="--reveal-delay:0ms;display:grid;grid-template-columns:3.5rem 1fr auto;gap:1rem;align-items:start;padding:1.75rem 0.75rem;border-bottom:1px solid var(--t-line);color:inherit;text-decoration:none">
+      <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted);padding-top:0.4rem">001</span>
+      <span style="display:flex;flex-direction:column;gap:0.375rem;min-width:0">
+        <span style="display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap"><span style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.5rem;font-weight:400;line-height:1.25">AI Studio</span><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">PwC ETIC</span></span>
+        <span style="color:var(--t-text-secondary);font-size:1rem;max-width:54ch">Marketplace for workflow-integrated AI agents via connectors and MCPs</span>
+        <span class="prow-tags" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted);margin-top:0.25rem">TypeScript · React · Node.js · Python · MCP</span>
+      </span>
+      <span class="prow-arrow" style="font-size:1.125rem;color:var(--t-text-muted);padding-top:0.3rem">→</span>
+    </a>
+    <a href="Case Study - Saudi Real Estate.dc.html" class="prow" data-reveal style="--reveal-delay:70ms;display:grid;grid-template-columns:3.5rem 1fr auto;gap:1rem;align-items:start;padding:1.75rem 0.75rem;border-bottom:1px solid var(--t-line);color:inherit;text-decoration:none">
+      <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted);padding-top:0.4rem">002</span>
+      <span style="display:flex;flex-direction:column;gap:0.375rem;min-width:0">
+        <span style="display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap"><span style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.5rem;font-weight:400;line-height:1.25">Saudi Real Estate Marketplace</span><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">Ejada</span></span>
+        <span style="color:var(--t-text-secondary);font-size:1rem;max-width:54ch">100% contactless verification and unit allocation via government APIs</span>
+        <span class="prow-tags" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted);margin-top:0.25rem">React Native · TypeScript · Node.js · KSA gov APIs</span>
+      </span>
+      <span class="prow-arrow" style="font-size:1.125rem;color:var(--t-text-muted);padding-top:0.3rem">→</span>
+    </a>
+    <a href="Case Study - Flowlens.dc.html" class="prow" data-reveal style="--reveal-delay:140ms;display:grid;grid-template-columns:3.5rem 1fr auto;gap:1rem;align-items:start;padding:1.75rem 0.75rem;border-bottom:1px solid var(--t-line);color:inherit;text-decoration:none">
+      <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted);padding-top:0.4rem">003</span>
+      <span style="display:flex;flex-direction:column;gap:0.375rem;min-width:0">
+        <span style="display:flex;align-items:baseline;gap:0.75rem;flex-wrap:wrap"><span style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.5rem;font-weight:400;line-height:1.25">Flowlens</span><span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">Magentic AI</span></span>
+        <span style="color:var(--t-text-secondary);font-size:1rem;max-width:54ch">Real-time observability catching agent bugs before production</span>
+        <span class="prow-tags" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted);margin-top:0.25rem">TypeScript · React · Next.js · AI agents</span>
+      </span>
+      <span class="prow-arrow" style="font-size:1.125rem;color:var(--t-text-muted);padding-top:0.3rem">→</span>
+    </a>
+  </section>
+
+  <section id="process" style="background:var(--t-bg-secondary);border-top:1px solid var(--t-line-subtle);border-bottom:1px solid var(--t-line-subtle)">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:clamp(4rem, 3rem + 5vw, 8rem)">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;margin-bottom:clamp(2rem, 1.5rem + 2vw, 3.5rem);position:relative">
+        <span style="color:var(--t-accent)">04</span><span>/ Process</span>
+        <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));gap:clamp(1.5rem, 1rem + 2vw, 3rem)">
+        <div class="pblock" data-reveal style="--reveal-delay:0ms;display:flex;flex-direction:column;gap:0.625rem">
+          <span class="pidx" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;font-weight:500;color:var(--t-text-muted)">01</span>
+          <span class="ptitle" style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.25rem;font-weight:400">Discovery</span>
+          <span style="font-size:0.9375rem;color:var(--t-text-secondary)">A free 30-minute call to understand your product, team, constraints, and what success looks like. No pitch deck — just clarity on whether there's a fit.</span>
+        </div>
+        <div class="pblock" data-reveal style="--reveal-delay:70ms;display:flex;flex-direction:column;gap:0.625rem">
+          <span class="pidx" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;font-weight:500;color:var(--t-text-muted)">02</span>
+          <span class="ptitle" style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.25rem;font-weight:400">Scope &amp; plan</span>
+          <span style="font-size:0.9375rem;color:var(--t-text-secondary)">A written brief: approach, timeline, deliverables, and explicit out-of-scope items. You know exactly what you're buying before any code is written.</span>
+        </div>
+        <div class="pblock" data-reveal style="--reveal-delay:140ms;display:flex;flex-direction:column;gap:0.625rem">
+          <span class="pidx" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;font-weight:500;color:var(--t-text-muted)">03</span>
+          <span class="ptitle" style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.25rem;font-weight:400">Build &amp; iterate</span>
+          <span style="font-size:0.9375rem;color:var(--t-text-secondary)">Hands-on delivery with regular checkpoints and demos. You see working software early, not a big reveal at the end.</span>
+        </div>
+        <div class="pblock" data-reveal style="--reveal-delay:210ms;display:flex;flex-direction:column;gap:0.625rem">
+          <span class="pidx" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;font-weight:500;color:var(--t-text-muted)">04</span>
+          <span class="ptitle" style="font-family:'Newsreader',ui-serif,Georgia,serif;font-size:1.25rem;font-weight:400">Handoff</span>
+          <span style="font-size:0.9375rem;color:var(--t-text-secondary)">Documentation, knowledge transfer, and clean handoff. You keep all code, configs, and decisions recorded.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:clamp(4rem, 3rem + 5vw, 8rem)">
+    <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;position:relative">
+      <span style="color:var(--t-accent)">05</span><span>/ Services</span>
+      <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+    </div>
+    <div style="display:flex;flex-direction:column">
+      <div class="srow" data-reveal style="--reveal-delay:0ms;display:grid;grid-template-columns:minmax(200px, 18rem) 1fr;gap:1rem 3rem;padding-block:1.5rem;border-bottom:1px solid var(--t-line-subtle)">
+        <span style="font-weight:600;font-size:1.0625rem">Full-stack product development</span>
+        <span style="color:var(--t-text-secondary);font-size:1rem;max-width:68ch">From API design to deployed UI — web and mobile on TypeScript, React, Next.js, Node.js, React Native, and Python.</span>
+      </div>
+      <div class="srow" data-reveal style="--reveal-delay:70ms;display:grid;grid-template-columns:minmax(200px, 18rem) 1fr;gap:1rem 3rem;padding-block:1.5rem;border-bottom:1px solid var(--t-line-subtle)">
+        <span style="font-weight:600;font-size:1.0625rem">Architecture &amp; technical planning</span>
+        <span style="color:var(--t-text-secondary);font-size:1rem;max-width:68ch">System design, stack decisions, and implementation roadmaps — including AI agent integrations, MCP connectors, and gov/enterprise API work.</span>
+      </div>
+      <div class="srow" data-reveal style="--reveal-delay:140ms;display:grid;grid-template-columns:minmax(200px, 18rem) 1fr;gap:1rem 3rem;padding-block:1.5rem;border-bottom:1px solid var(--t-line-subtle)">
+        <span style="font-weight:600;font-size:1.0625rem">Codebase audit &amp; rescue</span>
+        <span style="color:var(--t-text-secondary);font-size:1rem;max-width:68ch">Review existing code, surface risks, and propose a clear path forward before a major refactor or hire.</span>
+      </div>
+      <div class="srow" data-reveal style="--reveal-delay:210ms;display:grid;grid-template-columns:minmax(200px, 18rem) 1fr;gap:1rem 3rem;padding-block:1.5rem;border-bottom:1px solid var(--t-line-subtle)">
+        <span style="font-weight:600;font-size:1.0625rem">Technical advisory</span>
+        <span style="color:var(--t-text-secondary);font-size:1rem;max-width:68ch">Fractional senior capacity for startups and agencies that need experienced judgment without a full-time hire.</span>
+      </div>
+    </div>
+    <blockquote data-reveal style="margin:clamp(2.5rem, 2rem + 2vw, 4rem) 0 0;padding-left:1.5rem;border-left:2px solid var(--t-line-strong);font-family:'Newsreader',ui-serif,Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);line-height:1.45;color:var(--t-text-primary);max-width:54ch;text-wrap:pretty">This isn't a fit if you're looking for the cheapest developer or a body to execute tickets without context. I work best with founders and teams who want a senior engineer to think with them — not just type for them.</blockquote>
+  </section>
+
+  <section id="stack" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-bottom:clamp(4rem, 3rem + 5vw, 8rem)">
+    <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;position:relative">
+      <span style="color:var(--t-accent)">06</span><span>/ Stack</span><span style="margin-left:auto">Years in production</span>
+      <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));column-gap:4rem">
+      <sc-for list="{{ stack }}" as="tech" hint-placeholder-count="10">
+        <div class="strow" data-reveal style="--reveal-delay:{{ tech.delay }};display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:0.75rem 0.5rem;border-bottom:1px solid var(--t-line-subtle)">
+          <span style="font-size:0.9375rem;font-weight:500">{{ tech.name }}</span>
+          <span class="syrs" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted)">{{ tech.years }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="faq" style="background:var(--t-bg-secondary);border-top:1px solid var(--t-line-subtle);border-bottom:1px solid var(--t-line-subtle)">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:clamp(4rem, 3rem + 5vw, 8rem)">
+      <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;position:relative">
+        <span style="color:var(--t-accent)">07</span><span>/ FAQ</span>
+        <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+      </div>
+      <div style="display:flex;flex-direction:column;max-width:56rem">
+        <sc-for list="{{ faq }}" as="item" hint-placeholder-count="6">
+          <div data-reveal style="--reveal-delay:{{ item.delay }};border-bottom:1px solid var(--t-line-subtle)">
+            <button onClick="{{ item.toggle }}" class="faq-btn" aria-expanded="{{ item.open }}" style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem;width:100%;padding:1.25rem 0.25rem;background:transparent;border:none;cursor:pointer;text-align:left;font-family:inherit">
+              <span class="faq-q" style="font-weight:600;font-size:1rem;color:var(--t-text-secondary)">{{ item.q }}</span>
+              <span class="{{ item.chevClass }}" style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:1rem;color:var(--t-text-muted);line-height:1">+</span>
+            </button>
+            <div class="{{ item.panelClass }}">
+              <div><p style="margin:0;padding:0 0.25rem 1.25rem;font-size:0.9375rem;color:var(--t-text-secondary);max-width:68ch;text-wrap:pretty">{{ item.a }}</p></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:clamp(6rem, 4rem + 8vw, 12rem)">
+    <div style="display:flex;align-items:baseline;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted);padding-bottom:0.75rem;margin-bottom:clamp(2rem, 1.5rem + 2vw, 3.5rem);position:relative">
+      <span style="color:var(--t-accent)">08</span><span>/ Contact</span>
+      <span class="hairline-draw" style="position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--t-line)"></span>
+    </div>
+    <div data-reveal style="--reveal-y:20px">
+      <h2 style="font-family:'Newsreader',ui-serif,Georgia,serif;font-weight:400;font-size:clamp(1.625rem, 1.35rem + 1.35vw, 2.375rem);line-height:1.25;letter-spacing:-0.015em;margin:0;max-width:24ch;text-wrap:balance">If you've read this far, we should probably talk.</h2>
+      <p style="margin:1.5rem 0 0;color:var(--t-text-secondary);font-size:1.0625rem;max-width:54ch;text-wrap:pretty">Book a free 30-minute intro. I'll ask four questions about your product, team, timeline, and constraints — and you'll know quickly whether I'm the right engineer for the job. No sales pitch.</p>
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem;margin-top:2.5rem">
+        <a href="mailto:adham.hassan7499@gmail.com" style="display:inline-flex;align-items:center;height:2.75rem;padding-inline:1.25rem;background:var(--t-solid);color:var(--t-text-on-solid);border-radius:4px;font-size:0.875rem;font-weight:500;letter-spacing:0.02em;text-decoration:none;transition:background 140ms cubic-bezier(0.22,1,0.36,1),transform 140ms cubic-bezier(0.22,1,0.36,1)" style-hover="background:var(--t-solid-hover);color:var(--t-text-on-solid);transform:translateY(-2px)">adham.hassan7499@gmail.com</a>
+        <span style="display:inline-flex;align-items:center;gap:0.5rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.75rem;color:var(--t-text-muted)"><span class="pulse-dot" style="width:6px;height:6px;border-radius:9999px;background:var(--t-positive);flex-shrink:0"></span>I reply within 24 hours.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid var(--t-line)">
+    <div style="width:min(100% - 2 * clamp(1.25rem, 0.75rem + 2.5vw, 2.5rem), 72rem);margin-inline:auto;padding-block:2rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:0.75rem;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.09em;text-transform:uppercase;color:var(--t-text-muted)">
+      <span>Adham Abdelwahab — Senior Software Engineer</span>
+      <span>Egypt (EET/EEST) · Flexible US/EU · © 2026</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'light' | 'dark'&quot;,&quot;section&quot;:&quot;Appearance&quot;},&quot;available&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  state = { dark: false, motion: false, scrolled: false, faqOpen: 0 };
+  faqData = [
+    { q: 'How do you price?', a: 'Scope-dependent — discussed on the intro call once I understand the problem. No public rate card; every engagement is different.' },
+    { q: 'What timezone are you in?', a: 'Egypt (EET/EEST). Flexible overlap with US East and European business hours.' },
+    { q: "What's the minimum engagement?", a: 'No hard minimum. Scoped work — a feature, an audit, a rescue — is welcome alongside longer contracts.' },
+    { q: 'Are you available now?', a: 'Yes — available for new contract and advisory work alongside current employment at Magentic AI.' },
+    { q: 'What happens on the first call?', a: "30 minutes. I'll ask about your product, team, timeline, and technical constraints. You'll know within the call whether I'm the right fit." },
+    { q: 'What if the project goes wrong?', a: "Clear written scope upfront, checkpoint reviews, and you keep all code and documentation regardless. I don't do open-ended retainers without defined deliverables." },
+  ];
+  componentDidMount() {
+    const stored = localStorage.getItem('ledger-mode');
+    const dark = this.props.theme ? this.props.theme === 'dark' : stored === 'dark';
+    if (dark !== this.state.dark) this.setState({ dark });
+    this._onScroll = () => {
+      const s = window.scrollY > 80;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._onScroll();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.setState({ motion: true }, () => {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          const els = document.querySelectorAll('[data-reveal], .hairline-draw');
+          this._io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+              if (e.isIntersecting) { e.target.classList.add('in'); this._io.unobserve(e.target); }
+            });
+          }, { rootMargin: '0px 0px -10% 0px' });
+          els.forEach((el) => this._io.observe(el));
+        }));
+      });
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+    if (this._io) this._io.disconnect();
+  }
+  componentDidUpdate(prev) {
+    if (prev.theme !== this.props.theme && this.props.theme) this.setState({ dark: this.props.theme === 'dark' });
+  }
+  renderVals() {
+    const open = this.state.faqOpen;
+    return {
+      themeClass: this.state.dark ? 'dark' : '',
+      motionClass: this.state.motion ? 'motion' : '',
+      scrolledClass: this.state.scrolled ? 'scrolled' : '',
+      modeLabel: this.state.dark ? 'Light' : 'Dark',
+      available: this.props.available ?? true,
+      toggle: () => {
+        const d = !this.state.dark;
+        this.setState({ dark: d });
+        localStorage.setItem('ledger-mode', d ? 'dark' : 'light');
+      },
+      stack: [
+        { name: 'TypeScript', years: '5 yrs' }, { name: 'React', years: '5 yrs' },
+        { name: 'Node.js', years: '5 yrs' }, { name: 'Next.js', years: '4 yrs' },
+        { name: 'Python', years: '4 yrs' }, { name: 'React Native', years: '3 yrs' },
+        { name: 'AWS', years: '3 yrs' }, { name: 'PostgreSQL', years: '4 yrs' },
+        { name: 'REST / Government APIs', years: '5 yrs' }, { name: 'LLM / MCP integrations', years: '2 yrs' },
+      ].map((t, i) => ({ ...t, delay: (i % 5) * 50 + 'ms' })),
+      faq: this.faqData.map((f, i) => ({
+        ...f,
+        delay: i * 40 + 'ms',
+        open: open === i,
+        panelClass: open === i ? 'faq-panel open' : 'faq-panel',
+        chevClass: open === i ? 'faq-chev open' : 'faq-chev',
+        toggle: () => this.setState({ faqOpen: this.state.faqOpen === i ? null : i }),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>
