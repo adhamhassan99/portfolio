@@ -24,6 +24,9 @@ const platformLabels: Record<Gallery["platform"], string> = {
 
 const CARD_WIDTH = "min(16.25rem, 74vw)";
 
+/** Quiet period after the last scroll event before the carousel counts as settled. */
+const SETTLE_MS = 140;
+
 type MobileAppGalleryProps = {
   media: Gallery;
   title: string;
@@ -32,8 +35,8 @@ type MobileAppGalleryProps = {
 export function MobileAppGallery({ media, title }: MobileAppGalleryProps) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
-  const steppingRef = useRef(false);
   const [active, setActive] = useState(0);
+  const [trackInset, setTrackInset] = useState<number | null>(null);
 
   const cards: GalleryCard[] = [
     ...(media.cover ? [{ type: "cover" as const, cover: media.cover }] : []),
@@ -44,8 +47,6 @@ export function MobileAppGallery({ media, title }: MobileAppGalleryProps) {
   const showControls = slideCount > 1;
 
   const syncActiveFromScroll = useCallback(() => {
-    if (steppingRef.current) return;
-
     const scroller = scrollerRef.current;
     const track = trackRef.current;
     if (!scroller || !track) return;
@@ -72,36 +73,96 @@ export function MobileAppGallery({ media, title }: MobileAppGalleryProps) {
     setActive(nearest);
   }, []);
 
+  /**
+   * Scrolls the carousel itself rather than calling `scrollIntoView` on the card,
+   * which would also scroll every ancestor scroll container — including the
+   * document, making the page jump vertically on every arrow press.
+   */
   const goTo = useCallback((index: number, behavior: ScrollBehavior = "smooth") => {
+    const scroller = scrollerRef.current;
     const track = trackRef.current;
-    if (!track) return;
+    if (!scroller || !track) return;
 
-    const items = track.querySelectorAll<HTMLElement>("[data-gallery-card]");
-    const item = items[index];
+    const item = track.querySelectorAll<HTMLElement>("[data-gallery-card]")[index];
     if (!item) return;
 
-    steppingRef.current = true;
     setActive(index);
 
-    item.scrollIntoView({ behavior, inline: "center", block: "nearest" });
+    const itemRect = item.getBoundingClientRect();
+    const itemCenter = itemRect.left + itemRect.width / 2;
+    const scrollerCenter =
+      scroller.getBoundingClientRect().left + scroller.clientWidth / 2;
+    const target = scroller.scrollLeft + itemCenter - scrollerCenter;
 
-    window.setTimeout(() => {
-      steppingRef.current = false;
-    }, behavior === "smooth" ? 420 : 0);
+    scroller.scrollTo({
+      left: Math.max(
+        0,
+        Math.min(target, scroller.scrollWidth - scroller.clientWidth),
+      ),
+      behavior,
+    });
   }, []);
 
+  /**
+   * The centering inset has to live in the flow as real width, so it is measured
+   * from the rendered card instead of expressed as a percentage of the track: the
+   * track's border box is capped at the scroller's content width, so any
+   * `padding-right` on it is painted inside that box, to the left of the
+   * overflowing cards, and adds no trailing scroll range at all.
+   */
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    const track = trackRef.current;
+    if (!scroller || !track) return;
+
+    const measure = () => {
+      const card = track.querySelector<HTMLElement>("[data-gallery-card]");
+      if (!card) return;
+      const inset = (scroller.clientWidth - card.getBoundingClientRect().width) / 2;
+      setTrackInset(Math.max(0, Math.round(inset)));
+    };
+
+    measure();
+
+    const observer = new ResizeObserver(measure);
+    observer.observe(scroller);
+    const card = track.querySelector<HTMLElement>("[data-gallery-card]");
+    if (card) observer.observe(card);
+
+    return () => observer.disconnect();
+  }, [slideCount]);
+
+  // Keep the active card centred when the inset changes under it (resize, rotate).
+  useEffect(() => {
+    if (trackInset === null) return;
+    goTo(active, "instant");
+    // Re-centring is a response to the inset, not to `active` changing.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [trackInset]);
+
+  /**
+   * `scrollend` is still missing in some browsers, so the active index is synced
+   * from a debounced `scroll` listener — the counter and the highlight then always
+   * describe the card that is actually centred, even after a manual swipe.
+   */
   useEffect(() => {
     const scroller = scrollerRef.current;
     if (!scroller) return;
 
-    const onScrollEnd = () => syncActiveFromScroll();
+    let timer = 0;
+    const settle = () => syncActiveFromScroll();
+    const onScroll = () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(settle, SETTLE_MS);
+    };
 
-    scroller.addEventListener("scrollend", onScrollEnd);
-    window.addEventListener("resize", onScrollEnd);
+    scroller.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
 
     return () => {
-      scroller.removeEventListener("scrollend", onScrollEnd);
-      window.removeEventListener("resize", onScrollEnd);
+      window.clearTimeout(timer);
+      scroller.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, [syncActiveFromScroll, slideCount]);
 
@@ -132,7 +193,7 @@ export function MobileAppGallery({ media, title }: MobileAppGalleryProps) {
           aria-label={`${title} app screenshots — scroll horizontally`}
           aria-roledescription="carousel"
           tabIndex={0}
-          className="galscroll -mx-gutter snap-x snap-mandatory overflow-x-auto px-gutter pb-2"
+          className="galscroll -mx-gutter snap-x snap-mandatory overflow-x-auto pb-2"
           onKeyDown={(event) => {
             if (event.key === "ArrowRight") {
               event.preventDefault();
@@ -146,9 +207,12 @@ export function MobileAppGallery({ media, title }: MobileAppGalleryProps) {
         >
           <ul
             ref={trackRef}
-            className="flex list-none gap-5 p-0"
+            className="flex w-max list-none gap-5 p-0"
             style={{
-              paddingInline: `max(var(--t-gutter), calc(50% - ${CARD_WIDTH} / 2))`,
+              paddingInline:
+                trackInset === null
+                  ? `calc(50% - ${CARD_WIDTH} / 2)`
+                  : `${trackInset}px`,
             }}
           >
             {cards.map((card, index) => {
