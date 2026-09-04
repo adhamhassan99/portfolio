@@ -20,20 +20,12 @@ export type GallerySlide = {
   framed?: boolean;
 };
 
-/** Optional first card of a gallery — app icon and name, App Store style. */
-export type GalleryCover = {
-  icon?: string;
-  title?: string;
-  subtitle?: string;
-};
-
 export type ProjectMedia =
   | { kind: "none" }
   | { kind: "image"; src: string; alt: string }
   | {
       kind: "gallery";
       platform: "iphone" | "android";
-      cover?: GalleryCover;
       slides: GallerySlide[];
     };
 
@@ -109,11 +101,6 @@ export const projects: Project[] = [
     media: {
       kind: "gallery",
       platform: "iphone",
-      cover: {
-        icon: "/work/el-gouna-app/icon.webp",
-        title: "El Gouna - Red Sea",
-        subtitle: "Orascom Development",
-      },
       slides: [
         {
           src: "/work/el-gouna-app/eg-1.webp",

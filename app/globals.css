@@ -505,18 +505,49 @@ p { text-wrap: pretty; margin: 0; }
   transform: translate(2px, -2px);
 }
 
-/* app store style gallery */
-.galscroll {
+/* app store style gallery — Embla viewport */
+.gallery-viewport {
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
 }
-.galscroll::-webkit-scrollbar {
+.gallery-viewport:active {
+  cursor: grabbing;
+}
+.gallery-viewport::-webkit-scrollbar {
   display: none;
 }
-.galcard {
-  transition: box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1);
+.gallery-viewport img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.gallery-container {
+  display: flex;
+  gap: var(--t-space-5);
+  touch-action: pan-y pinch-zoom;
+}
+.gallery-slide {
+  /* Do not use Tailwind w-max: --container-max maps it to 72rem, not max-content. */
+  flex: 0 0 min(16.25rem, 58vw, calc(min(70dvh, 32rem) * 9 / 19.5));
+  min-width: 0;
+}
+.gallery-device {
+  transition:
+    opacity var(--t-duration-slow) var(--t-ease-out),
+    transform var(--t-duration-slow) var(--t-ease-out);
+}
+.gallery-device[data-active="false"] {
+  opacity: 0.9;
+  transform: scale(0.95);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-device,
+  .gallery-device[data-active="false"] {
+    transition-duration: 0s;
+    transform: none;
+  }
 }
 
 /* hero employer links */
