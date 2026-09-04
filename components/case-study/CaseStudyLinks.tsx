@@ -7,6 +7,7 @@ const linkFields = [
   ["github", "GitHub"],
   ["appStore", "App Store"],
   ["playStore", "Play Store"],
+  ["youtube", "Demo video"],
 ] as const;
 
 type CaseStudyLinksProps = {

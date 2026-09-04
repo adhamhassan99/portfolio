@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTheme } from "next-themes";
 import { Container } from "@/components/ui/Container";
@@ -46,24 +46,67 @@ export function Nav({ variant = "home" }: NavProps) {
   useEffect(() => {
     if (!isHome) return;
 
-    const sections = navLinks.map((l) => document.getElementById(l.id)).filter(Boolean);
-    if (sections.length === 0) return;
+    const sectionIds = navLinks.map((l) => l.id);
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el != null);
+    if (elements.length === 0) return;
+
+    const visibility = new Map<string, IntersectionObserverEntry>();
+
+    const pickActive = () => {
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        setActiveSection(sectionIds[sectionIds.length - 1] ?? null);
+        return;
+      }
+
+      // Last intersecting section in nav order — lower sections win when several overlap.
+      let active: string | null = null;
+      for (const id of sectionIds) {
+        const entry = visibility.get(id);
+        if (entry?.isIntersecting) active = id;
+      }
+
+      if (!active) {
+        const probe = window.scrollY + window.innerHeight * 0.35;
+        for (const id of sectionIds) {
+          const el = document.getElementById(id);
+          if (el && el.offsetTop <= probe) active = id;
+        }
+      }
+
+      setActiveSection(active);
+    };
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]?.target.id) {
-          setActiveSection(visible[0].target.id);
-        }
+        entries.forEach((entry) => {
+          visibility.set(entry.target.id, entry);
+        });
+        pickActive();
       },
-      { rootMargin: "-40% 0px -45% 0px", threshold: [0, 0.25, 0.5] },
+      { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] },
     );
 
-    sections.forEach((s) => s && observer.observe(s));
-    return () => observer.disconnect();
+    elements.forEach((el) => observer.observe(el));
+
+    window.addEventListener("scroll", pickActive, { passive: true });
+    window.addEventListener("hashchange", pickActive);
+    pickActive();
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", pickActive);
+      window.removeEventListener("hashchange", pickActive);
+    };
   }, [isHome]);
+
+  const handleNavClick = useCallback((sectionId: string) => {
+    setActiveSection(sectionId);
+  }, []);
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
@@ -96,6 +139,7 @@ export function Nav({ variant = "home" }: NavProps) {
                     <Link
                       key={link.id}
                       href={href}
+                      onClick={() => handleNavClick(link.id)}
                       className="group relative text-sm font-medium text-ink-2 no-underline transition-colors duration-[140ms] hover:text-accent"
                     >
                       {link.label}
