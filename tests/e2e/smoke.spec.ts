@@ -31,12 +31,12 @@ test.describe("Portfolio smoke tests", () => {
     await page.goto("/");
     const heroCta = page.getByRole("link", { name: "Get in touch" });
     await expect(heroCta).toBeVisible();
-    await expect(heroCta).toHaveAttribute("href", "mailto:adham.hassan7499@gmail.com");
+    await expect(heroCta).toHaveAttribute("href", "mailto:hello@adhamabdelwahab.com");
 
     await page.goto("/#contact");
-    const emailLink = page.getByRole("link", { name: "adham.hassan7499@gmail.com" });
+    const emailLink = page.getByRole("link", { name: "hello@adhamabdelwahab.com" });
     await expect(emailLink).toBeVisible();
-    await expect(emailLink).toHaveAttribute("href", "mailto:adham.hassan7499@gmail.com");
+    await expect(emailLink).toHaveAttribute("href", "mailto:hello@adhamabdelwahab.com");
   });
 
   test("404 page renders with home link", async ({ page }) => {
