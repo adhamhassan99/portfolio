@@ -18,7 +18,9 @@ export function CaseStudyPage({ project }: CaseStudyPageProps) {
       <Nav variant="subpage" />
       <CaseStudyHeader project={project} />
       <CaseStudyLinks links={project.links} />
-      <CaseStudyMedia project={project} />
+      {project.media && project.media.kind !== "none" && (
+        <CaseStudyMedia project={project} />
+      )}
       <CaseStudyPreview preview={project.preview} />
       <CaseStudyBody sections={project.sections} />
       {project.nextProject && (

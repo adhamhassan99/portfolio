@@ -7,6 +7,19 @@ import { Reveal } from "@/components/ui/Reveal";
 import { intro } from "@/lib/content/projects";
 import { site } from "@/lib/content/site";
 
+function EmployerLink({ name, url }: { name: string; url: string }) {
+  return (
+    <Link
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hero-link"
+    >
+      {name}
+    </Link>
+  );
+}
+
 export function IntroSection() {
   return (
     <header id="intro" className="py-section-lg">
@@ -17,7 +30,6 @@ export function IntroSection() {
           className="mb-block"
           trailing={
             <Reveal
-              
               delay={0.06}
               className="ml-auto inline-flex items-center gap-2 tracking-label text-ink-2"
             >
@@ -27,19 +39,14 @@ export function IntroSection() {
           }
         />
 
-        <h1 className="max-w-[24ch] text-[clamp(2.25rem,5vw+1rem,3.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-balance">
+        <h1 className="max-w-[28ch] text-[clamp(2.25rem,5vw+1rem,3.5rem)] font-medium leading-[1.15] tracking-[-0.02em] text-balance">
           {intro.sentence}{" "}
-          {intro.employers.map((emp, i) => (
+          <EmployerLink {...intro.current} />
+          {intro.previouslyPrefix}{" "}
+          {intro.previous.map((emp, i) => (
             <span key={emp.name}>
-              {i > 0 && (i === intro.employers.length - 1 ? ", and " : ", ")}
-              <Link
-                href={emp.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-link"
-              >
-                {emp.name}
-              </Link>
+              {i > 0 && (i === intro.previous.length - 1 ? ", and " : ", ")}
+              <EmployerLink {...emp} />
             </span>
           ))}
           .

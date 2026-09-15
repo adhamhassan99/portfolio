@@ -2,7 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTheme } from "next-themes";
 import { Container } from "@/components/ui/Container";
@@ -26,6 +32,8 @@ export function Nav({ variant = "home" }: NavProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(() => variant === "subpage");
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuId = useId();
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
@@ -42,6 +50,19 @@ export function Nav({ variant = "home" }: NavProps) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [variant]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     if (!isHome) return;
@@ -63,7 +84,6 @@ export function Nav({ variant = "home" }: NavProps) {
         return;
       }
 
-      // Last intersecting section in nav order — lower sections win when several overlap.
       let active: string | null = null;
       for (const id of sectionIds) {
         const entry = visibility.get(id);
@@ -88,7 +108,10 @@ export function Nav({ variant = "home" }: NavProps) {
         });
         pickActive();
       },
-      { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] },
+      {
+        rootMargin: "-20% 0px -55% 0px",
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      },
     );
 
     elements.forEach((el) => observer.observe(el));
@@ -106,6 +129,7 @@ export function Nav({ variant = "home" }: NavProps) {
 
   const handleNavClick = useCallback((sectionId: string) => {
     setActiveSection(sectionId);
+    setMenuOpen(false);
   }, []);
 
   const toggleTheme = () => {
@@ -124,39 +148,49 @@ export function Nav({ variant = "home" }: NavProps) {
           <Link
             href={isHome ? "#intro" : "/#intro"}
             className="font-mono text-xs font-medium tracking-label uppercase text-ink no-underline transition-colors duration-[140ms] hover:text-accent"
+            onClick={() => setMenuOpen(false)}
           >
             {site.name}
           </Link>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             {isHome ? (
-              <div className="hidden items-center gap-5 sm:flex">
-                {navLinks.map((link) => {
-                  const href = `#${link.id}`;
-                  const isActive = activeSection === link.id;
-
-                  return (
-                    <Link
-                      key={link.id}
-                      href={href}
-                      onClick={() => handleNavClick(link.id)}
-                      className="group relative text-sm font-medium text-ink-2 no-underline transition-colors duration-[140ms] hover:text-accent"
-                    >
-                      {link.label}
-                      {isActive && !reducedMotion && (
-                        <motion.span
-                          layoutId="nav-indicator"
-                          className="absolute -bottom-1 left-0 h-0.5 w-full bg-accent"
-                          transition={springGentle}
-                        />
-                      )}
-                      {isActive && reducedMotion && (
-                        <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-accent" />
-                      )}
-                    </Link>
-                  );
-                })}
-              </div>
+              <>
+                <div className="hidden items-center gap-5 sm:flex">
+                  {navLinks.map((link) => {
+                    const isActive = activeSection === link.id;
+                    return (
+                      <Link
+                        key={link.id}
+                        href={`#${link.id}`}
+                        onClick={() => handleNavClick(link.id)}
+                        className="group relative text-sm font-medium text-ink-2 no-underline transition-colors duration-[140ms] hover:text-accent"
+                      >
+                        {link.label}
+                        {isActive && !reducedMotion && (
+                          <motion.span
+                            layoutId="nav-indicator"
+                            className="absolute -bottom-1 left-0 h-0.5 w-full bg-accent"
+                            transition={springGentle}
+                          />
+                        )}
+                        {isActive && reducedMotion && (
+                          <span className="absolute -bottom-1 left-0 h-0.5 w-full bg-accent" />
+                        )}
+                      </Link>
+                    );
+                  })}
+                </div>
+                <button
+                  type="button"
+                  className="cursor-pointer rounded-sm border border-line bg-transparent px-2.5 py-1.5 font-mono text-2xs font-medium tracking-label uppercase text-ink-2 transition-all duration-[140ms] hover:border-line-strong hover:text-ink sm:hidden"
+                  aria-expanded={menuOpen}
+                  aria-controls={menuId}
+                  onClick={() => setMenuOpen((o) => !o)}
+                >
+                  {menuOpen ? "Close" : "Menu"}
+                </button>
+              </>
             ) : (
               <div className="flex items-center gap-5">
                 <Link
@@ -188,6 +222,23 @@ export function Nav({ variant = "home" }: NavProps) {
           </div>
         </Container>
       </nav>
+
+      {isHome && menuOpen && (
+        <div id={menuId} className="border-b border-line bg-surface sm:hidden">
+          <Container className="flex flex-col gap-1 py-3">
+            {navLinks.map((link) => (
+              <Link
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => handleNavClick(link.id)}
+                className="rounded-sm px-2 py-2.5 text-sm font-medium text-ink-2 no-underline transition-colors duration-[140ms] hover:bg-hover hover:text-ink"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </Container>
+        </div>
+      )}
     </div>
   );
 }

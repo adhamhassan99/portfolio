@@ -22,7 +22,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Are you available now?",
     answer:
-      "Yes — available for new contract and advisory work alongside current employment at Magentic AI.",
+      "Yes — limited contract and advisory capacity alongside my full-time role at Orascom Development.",
   },
   {
     question: "What happens on the first call?",
