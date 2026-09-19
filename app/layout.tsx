@@ -2,19 +2,35 @@ import type { Metadata } from "next";
 import { display, body, mono } from "./fonts";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { site } from "@/lib/content/site";
+import { absoluteUrl } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
     default: `${site.name} — ${site.title}`,
     template: `%s — ${site.name}`,
   },
   description: site.metaDescription,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  keywords: [
+    "Adham Abdelwahab",
+    "senior software engineer",
+    "full-stack engineer",
+    "Next.js",
+    "React Native",
+    "TypeScript",
+    "Egypt",
+    "contract engineer",
+  ],
   openGraph: {
     title: `${site.name} — ${site.title}`,
     description: site.metaDescription,
-    type: "website",
+    url: absoluteUrl("/"),
+    siteName: site.name,
     locale: "en_US",
+    type: "website",
   },
   twitter: {
     card: "summary_large_image",
@@ -23,7 +39,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: site.name,
@@ -46,6 +62,18 @@ const jsonLd = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.url,
+  description: site.metaDescription,
+  author: {
+    "@type": "Person",
+    name: site.name,
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,7 +89,11 @@ export default function RootLayout({
       <body className="bg-surface font-sans text-md text-ink antialiased">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <ThemeProvider>{children}</ThemeProvider>
       </body>

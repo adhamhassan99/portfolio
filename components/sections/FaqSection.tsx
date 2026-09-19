@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useReducedMotion,
-} from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Container } from "@/components/ui/Container";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
@@ -27,12 +23,14 @@ export function FaqSection() {
         <div className="flex max-w-content flex-col">
           {faqItems.map((item, i) => {
             const isOpen = openIndex === i;
+            const panelId = `faq-panel-${i}`;
             return (
               <Reveal key={item.question} delay={i * 0.07}>
                 <div className="border-b border-line-subtle">
                   <button
                     type="button"
                     aria-expanded={isOpen}
+                    aria-controls={panelId}
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     className="faq-btn flex w-full cursor-pointer items-baseline justify-between gap-4 border-none bg-transparent px-1 py-5 text-left font-[inherit]"
                   >
@@ -50,21 +48,30 @@ export function FaqSection() {
                     </motion.span>
                   </button>
 
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={reducedMotion ? false : { height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={reducedMotion ? undefined : { height: 0, opacity: 0 }}
-                        transition={reducedMotion ? instant : springSoft}
-                        className="overflow-hidden"
-                      >
-                        <p className="max-w-prose px-1 pb-5 text-[0.9375rem] text-pretty text-ink-2">
-                          {item.answer}
-                        </p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Answers stay in the document for crawlers even when collapsed. */}
+                  <motion.div
+                    id={panelId}
+                    role="region"
+                    initial={false}
+                    animate={
+                      reducedMotion
+                        ? undefined
+                        : {
+                            height: isOpen ? "auto" : 0,
+                            opacity: isOpen ? 1 : 0,
+                          }
+                    }
+                    transition={reducedMotion ? instant : springSoft}
+                    className={
+                      isOpen
+                        ? "overflow-hidden"
+                        : "sr-only overflow-hidden"
+                    }
+                  >
+                    <p className="max-w-prose px-1 pb-5 text-[0.9375rem] text-pretty text-ink-2">
+                      {item.answer}
+                    </p>
+                  </motion.div>
                 </div>
               </Reveal>
             );

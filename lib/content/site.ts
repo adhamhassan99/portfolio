@@ -7,6 +7,6 @@ export const site = {
   email: "hello@adhamabdelwahab.com",
   timezone: "Egypt (EET/EEST), flexible with US/EU",
   metaDescription:
-    "Adham Abdelwahab — senior full-stack engineer at Orascom Development. AI platforms, fintech, and gov-integrated products. Previously PwC, Ejada, Magentic AI. Limited contract capacity. Egypt-based, flexible globally.",
+    "Senior full-stack engineer at Orascom Development. AI platforms, fintech, and gov-integrated products. Previously PwC, Ejada, and Magentic AI.",
   url: "https://adhamabdelwahab.com",
 } as const;
