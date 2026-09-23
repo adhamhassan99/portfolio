@@ -19,8 +19,21 @@ export function ContactSection() {
             {contact.firstCallDescription}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-5">
-            <Button href={`mailto:${contact.email}`}>{contact.email}</Button>
-            <span className="inline-flex items-center gap-2 font-mono text-xs text-ink-muted">
+            <Button
+              href={contact.calendarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {contact.calendarLabel}
+              <span className="sr-only"> (opens in new tab)</span>
+            </Button>
+            <Button href={`mailto:${contact.email}`} variant="secondary">
+              {contact.email}
+            </Button>
+          </div>
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-xs text-ink-muted">
+            <span>{contact.bookingNote}</span>
+            <span className="inline-flex items-center gap-2">
               <PulseDot size="sm" />
               {contact.responseTimePromise}
             </span>

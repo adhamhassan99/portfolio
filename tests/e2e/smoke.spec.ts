@@ -27,16 +27,33 @@ test.describe("Portfolio smoke tests", () => {
     await expect(page).toHaveURL(/\/work\/flowlens/);
   });
 
-  test("email CTA is present on homepage and contact section", async ({ page }) => {
+  test("booking and email CTAs are present on homepage", async ({ page }) => {
     await page.goto("/");
-    const heroCta = page.getByRole("link", { name: "Get in touch" });
+    const heroCta = page.getByRole("link", { name: "Book an intro" }).first();
     await expect(heroCta).toBeVisible();
-    await expect(heroCta).toHaveAttribute("href", "mailto:hello@adhamabdelwahab.com");
+    await expect(heroCta).toHaveAttribute(
+      "href",
+      "https://cal.com/adham-abdelwahab/intro-call",
+    );
 
     await page.goto("/#contact");
-    const emailLink = page.getByRole("link", { name: "hello@adhamabdelwahab.com" });
+    const contactCta = page
+      .locator("#contact")
+      .getByRole("link", { name: "Book an intro" });
+    await expect(contactCta).toBeVisible();
+    await expect(contactCta).toHaveAttribute(
+      "href",
+      "https://cal.com/adham-abdelwahab/intro-call",
+    );
+
+    const emailLink = page
+      .locator("#contact")
+      .getByRole("link", { name: "hello@adhamabdelwahab.com" });
     await expect(emailLink).toBeVisible();
-    await expect(emailLink).toHaveAttribute("href", "mailto:hello@adhamabdelwahab.com");
+    await expect(emailLink).toHaveAttribute(
+      "href",
+      "mailto:hello@adhamabdelwahab.com",
+    );
   });
 
   test("404 page renders with home link", async ({ page }) => {

@@ -54,7 +54,14 @@ export function IntroSection() {
 
         <div className="mt-block flex flex-wrap items-center gap-5">
           <Reveal delay={0.2}>
-            <Button href={`mailto:${site.email}`}>{site.ctaLabel}</Button>
+            <Button
+              href={site.calendarUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {site.ctaLabel}
+              <span className="sr-only"> (opens in new tab)</span>
+            </Button>
           </Reveal>
           <Reveal delay={0.12} className="text-[0.9375rem] text-ink-2">
             {intro.trustLine}
