@@ -1,0 +1,14 @@
+---
+description: After any UI change, run the Dev server and verify with Playwright
+alwaysApply: true
+---
+
+# UI verification with Playwright
+
+Whenever you make UI changes in this project:
+
+1. Start or reuse the local Next.js Dev server (`npm run dev`).
+2. Inspect the result with Playwright (user-playwright MCP or `npm run test:e2e`) before considering the work done.
+3. Confirm the affected pages look correct (snapshot/screenshot), links and layout work, and the console has no new errors.
+
+Do not claim UI work is complete without this verification.

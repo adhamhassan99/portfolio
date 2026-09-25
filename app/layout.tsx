@@ -47,6 +47,7 @@ const personJsonLd = {
   email: site.email,
   url: site.url,
   description: site.metaDescription,
+  sameAs: [site.linkedinUrl, site.githubUrl],
   knowsAbout: [
     "TypeScript",
     "React",

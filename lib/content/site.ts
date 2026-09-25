@@ -11,4 +11,12 @@ export const site = {
   metaDescription:
     "Senior full-stack engineer at Orascom Development. AI platforms, fintech, and gov-integrated products. Previously PwC, Ejada, and Magentic AI.",
   url: "https://adhamabdelwahab.com",
+  /** Profiles used for Person sameAs and on-page disambiguation links. */
+  linkedinUrl: "https://www.linkedin.com/in/adhamhassanabdelwahab",
+  githubUrl: "https://github.com/adhamhassan99",
 } as const;
+
+export const profileLinks = [
+  { href: site.linkedinUrl, label: "LinkedIn" },
+  { href: site.githubUrl, label: "GitHub" },
+] as const;

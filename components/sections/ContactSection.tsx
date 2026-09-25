@@ -4,6 +4,7 @@ import { PulseDot } from "@/components/ui/PulseDot";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { contact } from "@/lib/content/contact";
+import { profileLinks } from "@/lib/content/site";
 
 export function ContactSection() {
   return (
@@ -37,6 +38,18 @@ export function ContactSection() {
               <PulseDot size="sm" />
               {contact.responseTimePromise}
             </span>
+            <span aria-hidden="true">·</span>
+            {profileLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ink-muted no-underline transition-colors duration-[140ms] hover:text-ink"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </Reveal>
       </Container>

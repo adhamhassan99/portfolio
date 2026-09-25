@@ -54,6 +54,33 @@ test.describe("Portfolio smoke tests", () => {
       "href",
       "mailto:hello@adhamabdelwahab.com",
     );
+
+    const contactLinkedIn = page
+      .locator("#contact")
+      .getByRole("link", { name: "LinkedIn" });
+    await expect(contactLinkedIn).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/adhamhassanabdelwahab",
+    );
+    const contactGitHub = page
+      .locator("#contact")
+      .getByRole("link", { name: "GitHub" });
+    await expect(contactGitHub).toHaveAttribute(
+      "href",
+      "https://github.com/adhamhassan99",
+    );
+
+    const footer = page.locator("footer");
+    await expect(
+      footer.getByRole("link", { name: "LinkedIn" }),
+    ).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/adhamhassanabdelwahab",
+    );
+    await expect(footer.getByRole("link", { name: "GitHub" })).toHaveAttribute(
+      "href",
+      "https://github.com/adhamhassan99",
+    );
   });
 
   test("404 page renders with home link", async ({ page }) => {
